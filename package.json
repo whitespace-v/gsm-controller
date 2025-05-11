@@ -1,0 +1,18 @@
+{
+  "main": "server.js",
+  "type": "commonjs",
+  "dependencies": {
+    "@koa/router": "^13.1.0",
+    "@prisma/client": "^6.7.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "koa": "^3.0.0",
+    "koa-bodyparser": "^4.4.1",
+    "koa2-swagger-ui": "^5.11.0",
+    "pino": "^9.6.0",
+    "pino-multi-stream": "^6.0.0",
+    "prisma": "^6.7.0",
+    "serialport-gsm": "^4.0.1",
+    "yamljs": "^0.3.0"
+  }
+}

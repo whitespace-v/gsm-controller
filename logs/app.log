@@ -1,0 +1,77 @@
+{"level":30,"time":1746950126436,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746950126439,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746950126493,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"867793031569603","msg":"Прочитан IMEI"}
+{"level":40,"time":1746950126566,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","err":{"type":"Error","message":"USSD-запрос не прошёл: fail","stack":"Error: USSD-запрос не прошёл: fail\n    at /home/arch/Documents/Projects/SendSMS/modemManager.js:71:18\n    at Immediate.<anonymous> (/home/arch/Documents/Projects/SendSMS/node_modules/serialport-gsm/lib/functions/ussd.js:57:7)\n    at process.processImmediate (node:internal/timers:493:21)"},"msg":"Номер SIM не прочитан, оставим null"}
+{"level":40,"time":1746950126569,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Порт закрылся, переподключаемся"}
+{"level":30,"time":1746950126593,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","retry":1,"delay":10000,"msg":"Попытка переподключения"}
+{"level":30,"time":1746950136596,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem успешно переподключился"}
+{"level":30,"time":1746950136645,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"867793031569603","msg":"Прочитан IMEI"}
+{"level":40,"time":1746950136716,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","err":{"type":"Error","message":"USSD-запрос не прошёл: fail","stack":"Error: USSD-запрос не прошёл: fail\n    at /home/arch/Documents/Projects/SendSMS/modemManager.js:71:18\n    at Immediate.<anonymous> (/home/arch/Documents/Projects/SendSMS/node_modules/serialport-gsm/lib/functions/ussd.js:57:7)\n    at process.processImmediate (node:internal/timers:493:21)"},"msg":"Номер SIM не прочитан, оставим null"}
+{"level":40,"time":1746950136717,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Порт закрылся, переподключаемся"}
+{"level":30,"time":1746950136725,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","retry":2,"delay":20000,"msg":"Попытка переподключения"}
+{"level":30,"time":1746950156727,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem успешно переподключился"}
+{"level":30,"time":1746950156775,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"867793031569603","msg":"Прочитан IMEI"}
+{"level":40,"time":1746950156846,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","err":{"type":"Error","message":"USSD-запрос не прошёл: fail","stack":"Error: USSD-запрос не прошёл: fail\n    at /home/arch/Documents/Projects/SendSMS/modemManager.js:71:18\n    at Immediate.<anonymous> (/home/arch/Documents/Projects/SendSMS/node_modules/serialport-gsm/lib/functions/ussd.js:57:7)\n    at process.processImmediate (node:internal/timers:493:21)"},"msg":"Номер SIM не прочитан, оставим null"}
+{"level":40,"time":1746950156846,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Порт закрылся, переподключаемся"}
+{"level":30,"time":1746950156854,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","retry":3,"delay":40000,"msg":"Попытка переподключения"}
+{"level":30,"time":1746950196866,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem успешно переподключился"}
+{"level":30,"time":1746950196913,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"867793031569603","msg":"Прочитан IMEI"}
+{"level":40,"time":1746950196983,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","err":{"type":"Error","message":"USSD-запрос не прошёл: fail","stack":"Error: USSD-запрос не прошёл: fail\n    at /home/arch/Documents/Projects/SendSMS/modemManager.js:71:18\n    at Immediate.<anonymous> (/home/arch/Documents/Projects/SendSMS/node_modules/serialport-gsm/lib/functions/ussd.js:57:7)\n    at process.processImmediate (node:internal/timers:493:21)"},"msg":"Номер SIM не прочитан, оставим null"}
+{"level":50,"time":1746950196984,"pid":69805,"hostname":"ArchLinux","port":"/dev/ttyUSB0","retry":4,"msg":"Превышено число попыток (3), отменяем переподключение"}
+{"level":30,"time":1746950708304,"pid":72657,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746950708307,"pid":72657,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746950708357,"pid":72657,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"866192030887283","msg":"Прочитан IMEI"}
+{"level":30,"time":1746950724003,"pid":72657,"hostname":"ArchLinux","port":"/dev/ttyUSB0","phone":"+79140773532","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746950724261,"pid":72657,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem initialized"}
+{"level":30,"time":1746950808322,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1746950808324,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746950808325,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746950808326,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746950808374,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746950808375,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"866192030887283","msg":"Прочитан IMEI"}
+{"level":30,"time":1746950817355,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB0","phone":"+79140773532","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746950817490,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem initialized"}
+{"level":40,"time":1746950828387,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","err":{"type":"Error","message":"Timeout при получении номера SIM","stack":"Error: Timeout при получении номера SIM\n    at Timeout.onTimeout [as _onTimeout] (/home/arch/Documents/Projects/SendSMS/modemManager.js:57:16)\n    at listOnTimeout (node:internal/timers:594:17)\n    at process.processTimers (node:internal/timers:529:7)"},"msg":"Номер SIM не прочитан, оставим null"}
+{"level":40,"time":1746950828390,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Порт закрылся, переподключаемся"}
+{"level":50,"time":1746950828395,"pid":73118,"hostname":"ArchLinux","err":{"type":"TypeError","message":"Cannot read properties of null (reading 'id')","stack":"TypeError: Cannot read properties of null (reading 'id')\n    at EventEmitter.<anonymous> (/home/arch/Documents/Projects/SendSMS/modemManager.js:229:38)"},"msg":"Ошибка при маркировке отключения"}
+{"level":30,"time":1746950828396,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","retry":1,"delay":10000,"msg":"Попытка переподключения"}
+{"level":30,"time":1746950838397,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem успешно переподключился"}
+{"level":30,"time":1746950838445,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746950846668,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","phone":"+79140774354","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746950846788,"pid":73118,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem initialized"}
+{"level":30,"time":1746952260631,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952260634,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952260634,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952260635,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952260683,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746952269425,"pid":79590,"hostname":"ArchLinux","port":"/dev/ttyUSB1","phone":"+79140774354","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746952323377,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952323380,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952323381,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952323382,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952323430,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746952323431,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"866192030887283","msg":"Прочитан IMEI"}
+{"level":30,"time":1746952331521,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB1","phone":"+79140774354","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746952331713,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem initialized"}
+{"level":30,"time":1746952339278,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB0","phone":"+79140773532","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746952339389,"pid":80203,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem initialized"}
+{"level":30,"time":1746952423279,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952423282,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746952423283,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952423284,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746952423332,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746952423333,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"866192030887283","msg":"Прочитан IMEI"}
+{"level":30,"time":1746952432075,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB0","phone":"+79140773532","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746952432215,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem initialized"}
+{"level":30,"time":1746952434099,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB1","phone":"+79140774354","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746952434293,"pid":80988,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem initialized"}
+{"level":30,"time":1746953083882,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1746953083884,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1746953083885,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746953083887,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem впервые открыт, сбрасываем счётчики"}
+{"level":30,"time":1746953083934,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB1","imei":"869270042339266","msg":"Прочитан IMEI"}
+{"level":30,"time":1746953083935,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB0","imei":"866192030887283","msg":"Прочитан IMEI"}
+{"level":30,"time":1746953093239,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB1","phone":"+79140774354","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746953093431,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB1","msg":"Modem initialized"}
+{"level":30,"time":1746953093594,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB0","phone":"+79140773532","msg":"Прочитан номер SIM"}
+{"level":30,"time":1746953093703,"pid":83966,"hostname":"ArchLinux","port":"/dev/ttyUSB0","msg":"Modem initialized"}
