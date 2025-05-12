@@ -1,19 +1,11 @@
 // modemManager.js
-const { PrismaClient } = require("@prisma/client");
 const prisma = require("./db");
 
 const serialportgsm = require("serialport-gsm");
 const { Modem } = serialportgsm;
 let ussd = require("./node_modules/serialport-gsm/lib/functions/ussd.js");
 
-const pino = require("pino");
-const multistream = require("pino-multi-stream").multistream;
-const streams = [
-  { stream: process.stdout },
-  { stream: pino.destination("./logs/app.log") },
-];
-
-const logger = pino({ level: "info" }, multistream(streams));
+const logger = require("./logger");
 
 const DEFAULT_RECONNECT_DELAY = 5000;
 const MAX_RECONNECT_DELAY = 1 * 60 * 1000;
@@ -105,6 +97,17 @@ class ModemManager {
     await this._createAndOpen(entry);
   }
 
+  async _deleteMessages(modem) {
+    await new Promise((resolve, reject) => {
+      modem.deleteAllSimMessages((data) =>
+        data
+          ? resolve(data)
+          : reject(new Error("Не удалось удалить сообщения")),
+      );
+      logger.info("Сообщения успешно удалены");
+    });
+  }
+
   async _createAndOpen(entry) {
     const { port, options } = entry;
     const modem = Modem();
@@ -141,6 +144,8 @@ class ModemManager {
         logger.info({ port }, "Modem успешно переподключился");
       }
 
+      await this._deleteMessages(modem);
+
       // получаем IMEI
       try {
         entry.imei = await this._getModemSerial(modem);
@@ -150,14 +155,23 @@ class ModemManager {
         return modem.close();
       }
 
+      if (!entry.imei) {
+        logger.error("IMEI пустой, отмена upsert");
+        return modem.close();
+      }
+
       // получаем номер SIM (если нужно)
       try {
         entry.phone = await this._getSubscriberNumber(modem);
         entry.phone = "+" + entry.phone;
         logger.info({ port, phone: entry.phone }, "Прочитан номер SIM");
+        await this._deleteMessages(modem);
       } catch (e) {
         logger.warn({ port, err: e }, "Номер SIM не прочитан, оставим null");
       }
+
+      console.log("LOG IMEI: ", entry.imei);
+      console.log("LOG PORT: ", port);
 
       // upsert ModemDevice
       const device = await prisma.modemDevice.upsert({
@@ -254,21 +268,14 @@ class ModemManager {
     });
     const simId = device.currentSimId;
 
-    // сбросить expire у старых
-    await prisma.smsIncoming.updateMany({
-      where: { modemDeviceId: device.id, expire: false },
-      data: { expire: true },
-    });
-
     // сохранить новое
-    await prisma.smsIncoming.create({
+    await prisma.smsIncomingHistory.create({
       data: {
         modemDeviceId: device.id,
         simCardId: simId,
         sender,
         receivedAt: dateTimeSent,
         text: message,
-        expire: false,
       },
     });
   }
@@ -280,14 +287,16 @@ class ModemManager {
   async getCode(phone) {
     // 1) Ищем SimCard и связанный ModemDevice
     const sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: phone },
+      where: { phoneNumber: phone, status: "active" },
     });
-    if (!sim) throw new Error("SIM не зарегистрирована");
+    if (!sim) throw new Error(`SIM ${phone} не зарегистрирована`);
+    else if (sim.busy == true)
+      throw new Error(`SIM ${phone} в данный момент занята`);
 
     const device = await prisma.modemDevice.findFirst({
       where: { currentSimId: sim.id },
     });
-    if (!device) throw new Error("SIM не привязана к модему");
+    if (!device) throw new Error(`SIM ${phone} не привязана к модему`);
 
     // 2) Достаём entry с самим modem-объектом
     const entry = this.modems.get(device.serialNumber);
@@ -295,12 +304,17 @@ class ModemManager {
 
     const modem = entry.modem;
 
+    await prisma.simCard.update({
+      where: { id: sim.id },
+      data: { busy: true },
+    });
+
     // 3) Возвращаем promise, который ждёт onNewMessage
     const codeText = await new Promise((resolve, reject) => {
       // таймаут на 20 секунд
       const timer = setTimeout(() => {
         modem.removeListener("onNewMessage", handler);
-        reject(new Error("Timeout: SMS не пришло за 20 секунд"));
+        reject(new Error("Timeout: SMS не пришло за 60 секунд"));
       }, 60_000);
 
       // одноразовый обработчик
@@ -311,7 +325,6 @@ class ModemManager {
         const msg = messages[0];
         const { sender, message, dateTimeSent } = msg;
 
-        // сохраняем входящее сообщение (expire=false)
         try {
           await this.saveIncoming(entry, {
             sender,
@@ -329,42 +342,107 @@ class ModemManager {
       modem.once("onNewMessage", handler);
     });
 
+    await prisma.simCard.update({
+      where: { id: sim.id },
+      data: { busy: false },
+    });
+
+    await this._deleteMessages(modem);
+
     return codeText;
   }
 
   async sendSMSByPhone(fromPhone, to, text) {
-    const sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: fromPhone },
-    });
-    if (!sim) throw new Error("SIM не зарегистрирована");
+    // 1) Выбрать SIM
+    let sim;
+    if (fromPhone) {
+      sim = await prisma.simCard.findUnique({
+        where: { phoneNumber: fromPhone, status: "active" }, // TODO: добавить фильтр по роли симкарты
+      });
+      if (!sim) throw new Error(`SIM ${fromPhone} не зарегистрирована`);
+      else if (sim.busy == true)
+        throw new Error(`SIM ${fromPhone} в данный момент используется`);
+    } else {
+      // сначала неприменённые
+      sim = await prisma.simCard.findFirst({
+        where: { status: "active", busy: false, lastUsedAt: null }, // TODO: добавить фильтр по роли симкарты
+      });
+      if (!sim) {
+        // если все уже использованы — берём ту, что дольше всех простаивает
+        sim = await prisma.simCard.findFirst({
+          where: { status: "active", busy: false }, // TODO: добавить фильтр по роли симкарты
+          orderBy: { lastUsedAt: "asc" },
+        });
+      }
+      if (!sim) throw new Error("Нет свободных SIM-карт для отправки");
+      fromPhone = sim.phoneNumber;
+    }
+
+    // 2) Найти привязанный модем
     const device = await prisma.modemDevice.findFirst({
       where: { currentSimId: sim.id },
     });
-    if (!device) throw new Error("SIM не привязана");
+    if (!device)
+      throw new Error(`SIM ${fromPhone} не привязана ни к одному модему`);
 
     const entry = this.modems.get(device.serialNumber);
-    if (!entry) throw new Error("Modem не запущен");
+    if (!entry)
+      throw new Error(`Modem на порту ${device.serialNumber} не запущен`);
 
-    return new Promise((res, rej) => {
-      entry.modem.sendSMS(to, text, false, (data) => {
-        if (data.error) rej(data);
-        else res(data);
-      });
+    // 3) Пометить SIM как занятую
+    await prisma.simCard.update({
+      where: { id: sim.id },
+      data: { busy: true },
     });
+
+    try {
+      // 4) Отправить SMS
+      const result = await new Promise((res, rej) => {
+        entry.modem.sendSMS(to, text, false, (data) => {
+          if (data.error) rej(new Error(data.error));
+          else res(data);
+        });
+      });
+
+      // 5) Обновить время последнего использования
+      await prisma.simCard.update({
+        where: { id: sim.id },
+        data: { lastUsedAt: new Date() },
+      });
+
+      return result;
+    } finally {
+      await this._deleteMessages(entry.modem);
+
+      // 6) Снять busy-флаг в любом случае
+      await prisma.simCard.update({
+        where: { id: sim.id },
+        data: { busy: false },
+      });
+    }
   }
 
   async getBalanceByPhone(phone) {
     const sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: phone },
+      where: { phoneNumber: phone, status: "active" },
     });
-    if (!sim) throw new Error("SIM не зарегистрирована");
+    if (!sim) throw new Error(`SIM ${phone} не зарегистрирована`);
+    else if (sim.busy == true)
+      throw new Error(`SIM ${phone} в данный момент используется`);
+
     const device = await prisma.modemDevice.findFirst({
       where: { currentSimId: sim.id },
     });
-    if (!device) throw new Error("SIM не привязана");
+    if (!device) throw new Error(`SIM ${phone} не привязана`);
 
     const entry = this.modems.get(device.serialNumber);
     if (!entry) throw new Error("Modem не запущен");
+
+    // Пометить SIM как занятую
+    await prisma.simCard.update({
+      where: { id: sim.id },
+      data: { busy: true },
+    });
 
     const modem = entry.modem;
     // ждём ответа на USSD
@@ -382,6 +460,13 @@ class ModemManager {
       modem.sendUSSD("*100#", () => {});
     });
 
+    await this._deleteMessages(modem);
+
+    await prisma.simCard.update({
+      where: { id: sim.id },
+      data: { busy: false },
+    });
+
     return resp;
   }
 
@@ -389,7 +474,7 @@ class ModemManager {
     const sim = await prisma.simCard.findUnique({
       where: { phoneNumber: phone },
     });
-    if (!sim) throw new Error("SIM не зарегистрирована");
+    if (!sim) throw new Error(`SIM ${phone} не зарегистрирована`);
 
     const history = await prisma.modemSimHistory.findMany({
       where: { simId: sim.id },

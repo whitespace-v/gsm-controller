@@ -7,31 +7,46 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model ModemDevice {
-  id           Int      @id @default(autoincrement())
-  imei         String   @unique
-  serialNumber String   @unique
-  status       String
-  currentSim   SimCard? @relation(fields: [currentSimId], references: [id])
-  currentSimId Int?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+enum SimRole {
+  TWO_FA
+  BANK
+  UNIVERSAL
+}
 
-  history ModemSimHistory[]
-  sms     SmsIncoming[]
+model ModemDevice {
+  id           Int    @id @default(autoincrement())
+  imei         String @unique
+  serialNumber String @unique
+  status       String
+
+  // связь "CurrentSim" с SimCard
+  currentSim   SimCard? @relation("CurrentSim", fields: [currentSimId], references: [id])
+  currentSimId Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  history    ModemSimHistory[]
+  smsHistory SmsIncomingHistory[]
 }
 
 model SimCard {
-  id          Int      @id @default(autoincrement())
-  phoneNumber String   @unique
+  id          Int       @id @default(autoincrement())
+  phoneNumber String    @unique
   provider    String
   status      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  role        SimRole   @default(UNIVERSAL)
+  busy        Boolean   @default(false)
+  lastUsedAt  DateTime?
 
-  history     ModemSimHistory[]
-  sms         SmsIncoming[]
-  ModemDevice ModemDevice[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  history    ModemSimHistory[]
+  smsHistory SmsIncomingHistory[]
+
+  // «обратная» сторона связи "CurrentSim"
+  currentModems ModemDevice[] @relation("CurrentSim")
 }
 
 model ModemSimHistory {
@@ -44,7 +59,7 @@ model ModemSimHistory {
   disconnectedAt DateTime?
 }
 
-model SmsIncoming {
+model SmsIncomingHistory {
   id            Int         @id @default(autoincrement())
   modemDevice   ModemDevice @relation(fields: [modemDeviceId], references: [id])
   modemDeviceId Int
@@ -53,8 +68,7 @@ model SmsIncoming {
   sender        String
   receivedAt    DateTime    @map("received_at")
   text          String
-  expire        Boolean     @default(true)
 
-  @@index([modemDeviceId, expire])
-  @@index([simCardId, expire])
+  @@index([modemDeviceId])
+  @@index([simCardId])
 }

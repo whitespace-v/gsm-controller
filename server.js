@@ -3,10 +3,10 @@ const Koa = require("koa");
 const Router = require("@koa/router");
 const bodyParser = require("koa-bodyparser");
 const ModemManager = require("./modemManager");
-const pino = require("pino");
+const logger = require("./logger");
 require("./shutdown");
 
-const logger = pino({ level: "info" });
+// const logger = pino({ level: "info" });
 const manager = new ModemManager();
 
 const options = {
@@ -75,9 +75,9 @@ router.get("/balance", async (ctx) => {
 // Отправка SMS: POST /send
 router.post("/send", async (ctx) => {
   const { from, to, text } = ctx.request.body;
-  if (!from || !to || !text) {
+  if (!to || !text) {
     ctx.status = 400;
-    ctx.body = { error: "from, to и text обязательны" };
+    ctx.body = { error: "to и text обязательны" };
     return;
   }
   try {

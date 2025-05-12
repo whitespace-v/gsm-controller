@@ -11,8 +11,10 @@
     "koa2-swagger-ui": "^5.11.0",
     "pino": "^9.6.0",
     "pino-multi-stream": "^6.0.0",
+    "pino-socket": "^7.4.0",
     "prisma": "^6.7.0",
     "serialport-gsm": "^4.0.1",
+    "ws": "^8.18.2",
     "yamljs": "^0.3.0"
   }
 }
