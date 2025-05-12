@@ -1,6 +1,5 @@
 // modemManager.js
 const { PrismaClient } = require("@prisma/client");
-// const prisma = new PrismaClient();
 const prisma = require("./db");
 
 const serialportgsm = require("serialport-gsm");
@@ -13,6 +12,7 @@ const streams = [
   { stream: process.stdout },
   { stream: pino.destination("./logs/app.log") },
 ];
+
 const logger = pino({ level: "info" }, multistream(streams));
 
 const DEFAULT_RECONNECT_DELAY = 5000;
@@ -196,18 +196,6 @@ class ModemManager {
       modem.initializeModem(() => logger.info({ port }, "Modem initialized"));
     });
 
-    // modem.on("onNewMessage", async (msgArray) => {
-    //   const msg = msgArray[0];
-    //   logger.info({ port, msg }, "Поступило SMS");
-    //   if (entry.imei) {
-    //     try {
-    //       await this.saveIncoming(entry, msg);
-    //     } catch (e) {
-    //       logger.error({ err: e }, "Ошибка сохранения SMS");
-    //     }
-    //   }
-    // });
-
     modem.on("close", async () => {
       if (++entry.retryCount > MAX_RETRIES) {
         logger.error(
@@ -313,7 +301,7 @@ class ModemManager {
       const timer = setTimeout(() => {
         modem.removeListener("onNewMessage", handler);
         reject(new Error("Timeout: SMS не пришло за 20 секунд"));
-      }, 20_000);
+      }, 60_000);
 
       // одноразовый обработчик
       const handler = async (messages) => {
@@ -391,7 +379,7 @@ class ModemManager {
         resolve(data);
       });
 
-      modem.sendUSSD("*100#", (_) => {});
+      modem.sendUSSD("*100#", () => {});
     });
 
     return resp;

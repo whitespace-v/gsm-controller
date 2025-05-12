@@ -55,7 +55,7 @@ router.get("/sms", async (ctx) => {
   }
 });
 
-// Баланс: GET /balance?from=+...
+// Баланс: GET /balance?from=%2B...
 router.get("/balance", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
@@ -88,7 +88,7 @@ router.post("/send", async (ctx) => {
   }
 });
 
-// История подключений: GET /history?from=+...
+// История подключений: GET /history?from=%2B...
 router.get("/history", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
