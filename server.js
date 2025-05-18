@@ -2,7 +2,7 @@
 const Koa = require("koa");
 const Router = require("@koa/router");
 const bodyParser = require("koa-bodyparser");
-const ModemManager = require("./modemManager");
+const ModemManager = require("./modemManager/modemManager");
 const logger = require("./logger");
 require("./shutdown");
 

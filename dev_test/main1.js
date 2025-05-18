@@ -32,7 +32,7 @@ let options = {
   logger: console,
 };
 
-modem.open("/dev/ttyUSB0", options, {});
+modem.open("/dev/ttyUSB1", options, {});
 
 modem.on("open", (data) => {
   // initialize modem
@@ -40,33 +40,37 @@ modem.on("open", (data) => {
     console.log("Modem initialized");
   });
 
+  modem.getSimInbox((data) => {
+    console.log(data);
+  });
+
   // modem.getNetworkSignal((callback) => {
   //   console.log("GET NETWORK SIGNAL: ", callback);
   // });
 
-  // modem.deleteAllSimMessages((data) => {
-  //   console.log(data);
-  // });
+  modem.deleteAllSimMessages((data) => {
+    console.log(data);
+  });
 
   modem.on("onNewIncomingUSSD", (data) => {
     console.log("New Incoming USSD: ", { data });
   });
 
-  // modem.on("onNewMessage", (data) => {
-  //   const firstMsg = data[0].message;
-  //   const phone = firstMsg.match(/\d+/)[0];
-  //   console.log("New Message: ", data);
-  //   console.log("New phone: ", phone);
-  //   // modem.close();
-  // });
+  modem.on("onNewMessage", (data) => {
+    const firstMsg = data[0].message;
+    const phone = firstMsg.match(/\d+/)[0];
+    console.log("New Message: ", data);
+    console.log("New phone: ", phone);
+    // modem.close();
+  });
 
   // modem.sendUSSD("*111*0887#", (data) => {
   //   console.log("Send SMS Data: ", data.status);
   // });
 
-  modem.sendUSSD("*100#", (data) => {
-    console.log("Send SMS Data: ", { data });
-  });
+  // modem.sendUSSD("*100#", (data) => {
+  //   console.log("Send SMS Data: ", { data });
+  // });
 
   // modem.getModemSerial((data) => {
   //   console.log(data.data.modemSerial);
@@ -79,11 +83,7 @@ modem.on("open", (data) => {
   // modem.sendSMS("+79841894786", "Test 2", false, (data) => {
   //   console.log(data);
   // });
-
-  modem.getSimInbox((data) => {
-    console.log(data);
-  });
-
+  //
   // modem.executeCommand(
   //   "AT+CIMI",
   //   (callback) => {

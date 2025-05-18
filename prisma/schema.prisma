@@ -16,7 +16,7 @@ enum SimRole {
 model ModemDevice {
   id           Int    @id @default(autoincrement())
   imei         String @unique
-  serialNumber String @unique
+  serialNumber String
   status       String
 
   // связь "CurrentSim" с SimCard
@@ -37,6 +37,7 @@ model SimCard {
   status      String
   role        SimRole   @default(UNIVERSAL)
   busy        Boolean   @default(false)
+  current_balance Decimal   @default("0")
   lastUsedAt  DateTime?
 
   createdAt DateTime @default(now())
