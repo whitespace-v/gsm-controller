@@ -3,8 +3,8 @@ const Koa = require("koa");
 const Router = require("@koa/router");
 const bodyParser = require("koa-bodyparser");
 const ModemManager = require("./modemManager/modemManager");
-const logger = require("./logger");
-require("./shutdown");
+const logger = require("./utils/logger");
+require("./utils/shutdown");
 
 // const logger = pino({ level: "info" });
 const manager = new ModemManager();

@@ -1,5 +1,5 @@
-const prisma = require("../../db");
-const logger = require("../../logger");
+const prisma = require("../../utils/db");
+const logger = require("../../utils/logger");
 
 module.exports = async function getConnectionHistoryByPhone(phone) {
   try {

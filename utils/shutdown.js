@@ -1,5 +1,6 @@
 // shutdown.js
 const prisma = require("./db"); // ваш prisma-клиент
+const logger = require("./logger");
 
 async function gracefulShutdown(signal) {
   try {

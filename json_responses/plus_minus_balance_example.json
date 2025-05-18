@@ -1,0 +1,11 @@
+{
+  "phone": "+79140774354",
+  "balance": {
+    "status": "Incoming USSD",
+    "data": {
+      "text": "Баланс:7,45р",
+      "follow": "no further action required",
+      "followCode": "0"
+    }
+  }
+}

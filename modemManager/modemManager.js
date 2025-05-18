@@ -4,8 +4,8 @@ const getBalanceByPhone = require("../modemManager/methods/getBalanceByPhone.js"
 const sendSMSByPhone = require("../modemManager/methods/sendSMSByPhone.js");
 const getCode = require("../modemManager/methods/getCode.js");
 const ussd = require("../node_modules/serialport-gsm/lib/functions/ussd.js");
-const prisma = require("../db");
-const logger = require("../logger");
+const prisma = require("../utils/db");
+const logger = require("../utils/logger");
 
 const serialportgsm = require("serialport-gsm");
 const { Modem } = serialportgsm;
