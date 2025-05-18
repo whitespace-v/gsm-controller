@@ -62,6 +62,8 @@ module.exports = async function getBalanceByPhone(
 
     const current_balance = _parseBalance(resp.data.text);
 
+    logger.info(`Баланс для SIM ${phone}: ${current_balance}`);
+
     await prisma.simCard.update({
       where: { id: sim.id },
       data: { busy: false, current_balance },

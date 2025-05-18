@@ -48,7 +48,8 @@ router.get("/sms", async (ctx) => {
     return;
   }
   try {
-    ctx.body = await manager.getCode(from);
+    const code = await manager.getCode(from);
+    ctx.body = { phone: from, code: code };
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };

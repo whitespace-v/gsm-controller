@@ -1,0 +1,38 @@
+const prisma = require("../../db");
+const logger = require("../../logger");
+
+module.exports = async function getConnectionHistoryByPhone(phone) {
+  try {
+    const sim = await prisma.simCard.findUnique({
+      where: { phoneNumber: phone },
+    });
+
+    if (!sim) {
+      logger.warn(`SIM ${phone} не зарегистрирована`);
+      return [];
+    }
+
+    const history = await prisma.modemSimHistory.findMany({
+      where: { simId: sim.id },
+      orderBy: { connectedAt: "desc" },
+      include: {
+        modemDevice: {
+          select: {
+            serialNumber: true,
+            imei: true,
+          },
+        },
+      },
+    });
+
+    return history.map((h) => ({
+      modemSerial: h.modemDevice.serialNumber,
+      modemImei: h.modemDevice.imei,
+      connectedAt: h.connectedAt,
+      disconnectedAt: h.disconnectedAt || null,
+    }));
+  } catch (err) {
+    logger.error({ err }, `getConnectionHistoryByPhone(${phone}): ошибка`);
+    return [];
+  }
+};

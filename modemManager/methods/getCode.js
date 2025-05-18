@@ -4,11 +4,10 @@ const logger = require("../../logger");
 module.exports = async function getCode(
   phone,
   modems,
-  _deleteMessages,
   _saveIncoming,
+  _deleteMessages,
 ) {
   try {
-    // 1) Ищем SimCard и связанный ModemDevice
     const sim = await prisma.simCard.findUnique({
       where: { phoneNumber: phone, status: "active" },
     });
@@ -32,7 +31,6 @@ module.exports = async function getCode(
       return;
     }
 
-    // 2) Достаём entry с самим modem-объектом
     const entry = modems.get(device.serialNumber);
     if (!entry) {
       logger.warn(`Modem ${device.serialNumber} не запущен`);
@@ -49,7 +47,6 @@ module.exports = async function getCode(
     let codeText;
 
     try {
-      // 3) Возвращаем promise, который ждёт onNewMessage
       codeText = await new Promise((resolve, reject) => {
         const timer = setTimeout(() => {
           modem.removeListener("onNewMessage", handler);
@@ -64,11 +61,7 @@ module.exports = async function getCode(
           const { sender, message, dateTimeSent } = msg;
 
           try {
-            await _saveIncoming(entry, {
-              sender,
-              dateTimeSent,
-              message,
-            });
+            await _saveIncoming(entry, { sender, dateTimeSent, message });
           } catch (e) {
             logger.error({ err: e }, "Ошибка сохранения SMS из getCode");
           }
