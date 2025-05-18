@@ -19,7 +19,7 @@ module.exports = async function getBalanceByPhone(
 
     if (sim.busy) {
       logger.warn(`SIM ${phone} занята`);
-      return;
+      return "busy";
     }
 
     const device = await prisma.modemDevice.findFirst({
@@ -71,6 +71,9 @@ module.exports = async function getBalanceByPhone(
 
     return current_balance;
   } catch (err) {
-    logger.error({ err }, "getBalanceByPhone: необработанная ошибка");
+    logger.error(
+      { err },
+      `Необработанная ошибка при получении баланса с SIM ${phone}`,
+    );
   }
 };

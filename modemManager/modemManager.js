@@ -230,7 +230,7 @@ class ModemManager {
       if (entry.phone) {
         sim = await prisma.simCard.upsert({
           where: { phoneNumber: entry.phone },
-          update: { status: "active" },
+          update: { status: "active", busy: false },
           create: {
             phoneNumber: entry.phone,
             provider: "unknown",

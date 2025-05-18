@@ -66,7 +66,11 @@ router.get("/balance", async (ctx) => {
   }
   try {
     const bal = await manager.getBalanceByPhone(from);
-    ctx.body = { phone: from, balance: bal };
+    if (bal == "busy") {
+      ctx.body = { phone: from, error: "Симкарта занята" };
+    } else {
+      ctx.body = { phone: from, balance: bal };
+    }
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };
@@ -82,7 +86,8 @@ router.post("/send", async (ctx) => {
     return;
   }
   try {
-    ctx.body = await manager.sendSMSByPhone(from, to, text);
+    const resp = await manager.sendSMSByPhone(from, to, text);
+    ctx.body = { phone: from, status: resp.data.response };
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };
