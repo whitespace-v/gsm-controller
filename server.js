@@ -87,7 +87,11 @@ router.post("/send", async (ctx) => {
   }
   try {
     const resp = await manager.sendSMSByPhone(from, to, text);
-    ctx.body = { phone: from, status: resp.data.response };
+    if (resp == "minus balance") {
+      ctx.body = { phone: from, status: "Недостаточно средств" };
+    } else {
+      ctx.body = { phone: from, status: resp.data.response };
+    }
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };

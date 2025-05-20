@@ -26,28 +26,30 @@ model ModemDevice {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  history    ModemSimHistory[]
-  smsHistory SmsIncomingHistory[]
+  ModemHistory ModemSimHistory[]
+  SmsIncoming  SmsIncomingHistory[]
+  SmsOutgoing  SmsOutgoingHistory[]
 }
 
 model SimCard {
-  id          Int       @id @default(autoincrement())
-  phoneNumber String    @unique
-  provider    String
-  status      String
-  role        SimRole   @default(UNIVERSAL)
-  busy        Boolean   @default(false)
+  id              Int       @id @default(autoincrement())
+  phoneNumber     String    @unique
+  provider        String
+  status          String
+  role            SimRole   @default(UNIVERSAL)
+  busy            Boolean   @default(false)
   current_balance Decimal   @default("0")
-  lastUsedAt  DateTime?
+  lastUsedAt      DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  history    ModemSimHistory[]
-  smsHistory SmsIncomingHistory[]
+  ModemHistory ModemSimHistory[]
+  SmsIncoming  SmsIncomingHistory[]
 
   // «обратная» сторона связи "CurrentSim"
-  currentModems ModemDevice[] @relation("CurrentSim")
+  currentModems ModemDevice[]        @relation("CurrentSim")
+  SmsOutgoing   SmsOutgoingHistory[]
 }
 
 model ModemSimHistory {
@@ -69,6 +71,21 @@ model SmsIncomingHistory {
   sender        String
   receivedAt    DateTime    @map("received_at")
   text          String
+
+  @@index([modemDeviceId])
+  @@index([simCardId])
+}
+
+model SmsOutgoingHistory {
+  id            Int         @id @default(autoincrement())
+  modemDevice   ModemDevice @relation(fields: [modemDeviceId], references: [id])
+  modemDeviceId Int
+  simCard       SimCard     @relation(fields: [simCardId], references: [id])
+  simCardId     Int
+  recipient     String
+  sentAt        DateTime    @default(now())
+  text          String
+  status        String      @default("sent")
 
   @@index([modemDeviceId])
   @@index([simCardId])

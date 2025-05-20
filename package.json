@@ -5,6 +5,7 @@
     "@koa/router": "^13.1.0",
     "@prisma/client": "^6.7.0",
     "body-parser": "^2.2.0",
+    "child_process": "^1.0.2",
     "express": "^5.1.0",
     "koa": "^3.0.0",
     "koa-bodyparser": "^4.4.1",

@@ -1,17 +1,18 @@
 // modemManager.js
-const getConnectionHistoryByPhone = require("../modemManager/methods/getConnectionHistoryByPhone.js");
-const getBalanceByPhone = require("../modemManager/methods/getBalanceByPhone.js");
-const sendSMSByPhone = require("../modemManager/methods/sendSMSByPhone.js");
-const getCode = require("../modemManager/methods/getCode.js");
+const getConnectionHistoryByPhone = require("./usecases/getConnectionHistoryByPhone.js");
+const getBalanceByPhone = require("./usecases/getBalanceByPhone.js");
+const sendSMSByPhone = require("./usecases/sendSMSByPhone.js");
+const getCode = require("./usecases/getCode.js");
 const ussd = require("../node_modules/serialport-gsm/lib/functions/ussd.js");
 const prisma = require("../utils/db");
 const logger = require("../utils/logger");
 
 const serialportgsm = require("serialport-gsm");
+const { exec } = require("child_process");
 const { Modem } = serialportgsm;
 
-const DEFAULT_RECONNECT_DELAY = 5000;
-const MAX_RECONNECT_DELAY = 1 * 60 * 1000;
+const DEFAULT_RECONNECT_DELAY = 2500;
+const MAX_RECONNECT_DELAY = 1 * 40 * 1000;
 const MAX_RETRIES = 3;
 
 class ModemManager {
@@ -21,17 +22,18 @@ class ModemManager {
 
   _getModemSerial(modem, timeout = 1000) {
     return new Promise((resolve, reject) => {
-      modem.getModemSerial(
-        (data) =>
-          data?.data?.modemSerial
-            ? resolve(data.data.modemSerial)
-            : reject(new Error("Нет IMEI в ответе")),
-        timeout,
-      );
+      modem.getModemSerial((data) => {
+        if (data?.data?.modemSerial) {
+          resolve(data.data.modemSerial);
+        } else {
+          logger.error("Нет IMEI в ответе");
+          reject();
+        }
+      }, timeout);
     });
   }
 
-  _getSubscriberNumber(modem, timeout = 30000) {
+  _getSubscriberNumber(modem, timeout = 15000) {
     return new Promise((resolve, reject) => {
       const onNewMessage = (messages) => {
         clearTimeout(timer);
@@ -43,31 +45,34 @@ class ModemManager {
         if (m) {
           resolve(m[0]);
         } else {
-          reject(new Error("Не нашли номер в тексте USSD-ответа"));
-          modem.close(); // закроем только этот модем
+          modem.close();
+          logger.error("Не нашли номер в тексте USSD-ответа");
+          reject();
         }
       };
 
       const onTimeout = () => {
         modem.removeListener("onNewMessage", onNewMessage);
-        reject(new Error("Timeout при получении номера SIM"));
         modem.close();
+
+        logger.warn("Timeout при получении номера SIM");
+
+        reject();
       };
 
       const timer = setTimeout(onTimeout, timeout);
 
-      // Одноразовый слушатель
       modem.on("onNewMessage", onNewMessage);
 
-      // Отправляем USSD и сразу проверяем статус
       modem.sendUSSD("*111*0887#", (data) => {
         if (data.status === "fail") {
           clearTimeout(timer);
           modem.removeListener("onNewMessage", onNewMessage);
-          reject(new Error("USSD-запрос не прошёл: fail"));
           modem.close();
+
+          logger.error("USSD-запрос не прошёл: fail");
+          reject();
         }
-        // иначе ждём события onNewMessage
       });
     });
   }
@@ -100,24 +105,6 @@ class ModemManager {
     await this._createAndOpen(entry);
   }
 
-  _parseBalance(input) {
-    // Убираем все пробелы и лишние символы
-    input = input.trim();
-    // Определяем знак
-    let isNegative = input.includes("Минус:");
-    // Убираем префикс ("Минус:" или "Баланс:")
-    let cleaned = input
-      .replace("Минус:", "")
-      .replace("Баланс:", "")
-      .replace("р", "")
-      .replace(",", ".")
-      .trim();
-    // Добавляем минус, если нужно
-    let value = isNegative ? `-${cleaned}` : cleaned;
-
-    return value;
-  }
-
   async _saveIncoming(entry, { sender, dateTimeSent, message }) {
     const device = await prisma.modemDevice.findUnique({
       where: { imei: entry.imei },
@@ -139,13 +126,45 @@ class ModemManager {
   async _deleteMessages(modem) {
     try {
       await new Promise((resolve, reject) => {
-        modem.deleteAllSimMessages((data) =>
-          data ? resolve(data) : console.log("Ошибка удаления"),
-        );
+        modem.deleteAllSimMessages((data) => (data ? resolve(data) : reject()));
         logger.info("Сообщения успешно удалены");
       });
     } catch (e) {
       logger.warn({ port, error: e }, "Ошибка при удалении сообщений");
+    }
+  }
+
+  async _replugUSB(port) {
+    port = port.replace("/dev/", "");
+
+    try {
+      await new Promise((resolve, reject) => {
+        exec(
+          `sudo /home/arch/Documents/Projects/gms-controller/bash_scripts/replug.sh ${port}`,
+          (error, stdout, stderr) => {
+            if (error) {
+              logger.error(
+                { port, msg: error.message },
+                "Ошибка программного переподключения порта",
+              );
+              reject(error);
+            }
+            if (stderr) {
+              logger.warn(
+                { port, msg: stderr },
+                "Предупреждение при программном переподключении порта",
+              );
+            }
+            logger.info({ port, msg: stdout }, "Порт успешно перезагружен");
+            resolve();
+          },
+        );
+      });
+    } catch (e) {
+      logger.error(
+        { port, error: e },
+        "Неизвестна ошибка при попытке программного переподключения порта",
+      );
     }
   }
 
@@ -190,8 +209,6 @@ class ModemManager {
         logger.info({ port }, "Modem успешно переподключился");
       }
 
-      await this._deleteMessages(modem);
-
       // получаем IMEI
       try {
         entry.imei = await this._getModemSerial(modem);
@@ -206,7 +223,6 @@ class ModemManager {
         return modem.close();
       }
 
-      // получаем номер SIM (если нужно)
       try {
         entry.phone = await this._getSubscriberNumber(modem);
         entry.phone = "+" + entry.phone;
@@ -214,9 +230,6 @@ class ModemManager {
       } catch (e) {
         logger.warn({ port, err: e }, "Номер SIM не прочитан, оставим null");
       }
-
-      console.log("LOG IMEI: ", entry.imei);
-      console.log("LOG PORT: ", port);
 
       // upsert ModemDevice
       const device = await prisma.modemDevice.upsert({
@@ -251,7 +264,7 @@ class ModemManager {
         });
       }
 
-      this.getBalanceByPhone(entry.phone);
+      await this.getBalanceByPhone(entry.phone);
 
       // инициализация дополнительных команд
       modem.initializeModem(() => logger.info({ port }, "Modem initialized"));
@@ -269,7 +282,19 @@ class ModemManager {
 
       modem.removeAllListeners(); // снимаем все слушатели
 
-      logger.warn({ port }, "Порт закрылся, переподключаемся");
+      if (entry.retryCount == 3) {
+        logger.warn(
+          { port },
+          `Порт закрылся в ${entry.retryCount} раз, программно переподключаем usb устройство`,
+        );
+        await this._replugUSB(port);
+      } else {
+        logger.warn(
+          { port },
+          `Порт закрылся в ${entry.retryCount} раз, переподключаемся`,
+        );
+      }
+
       if (entry.imei) {
         try {
           const device = await prisma.modemDevice.findUnique({
@@ -325,16 +350,13 @@ class ModemManager {
       text,
       this.modems,
       this._deleteMessages,
+      getConnectionHistoryByPhone,
     );
   }
 
   async getBalanceByPhone(phone) {
-    return getBalanceByPhone(
-      phone,
-      this.modems,
-      this._parseBalance,
-      this._deleteMessages,
-    );
+    console.log("PHONE NUMBER FROM MODEM MANAGER GETBALANCE: ", phone);
+    return getBalanceByPhone(phone, this.modems, this._deleteMessages);
   }
 
   async getConnectionHistoryByPhone(phone) {
