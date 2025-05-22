@@ -2,42 +2,30 @@ const prisma = require("../../utils/db");
 const logger = require("../../utils/logger");
 
 module.exports = async function getCode(
-  phone,
-  modems,
+  entry,
   _saveIncoming,
   _deleteMessages,
 ) {
+  let sim;       // Объект SIM-карты
+  const phone = entry.phone
+  const modem = entry.modem
+  const port = entry.port
+  const imei = entry.imei
+
   try {
-    const sim = await prisma.simCard.findUnique({
+    sim = await prisma.simCard.findUnique({
       where: { phoneNumber: phone, status: "active" },
     });
 
     if (!sim) {
-      logger.warn(`SIM ${phone} не зарегистрирована`);
+      logger.error({ port, imei, phone }, `SIM ${phone} не зарегистрирована`);
       return;
     }
 
     if (sim.busy === true) {
-      logger.warn(`SIM ${phone} в данный момент занята`);
+      logger.warn({ port, imei, phone }, `SIM ${phone} в данный момент занята`);
       return;
     }
-
-    const device = await prisma.modemDevice.findFirst({
-      where: { currentSimId: sim.id },
-    });
-
-    if (!device) {
-      logger.warn(`SIM ${phone} не привязана к модему`);
-      return;
-    }
-
-    const entry = modems.get(device.serialNumber);
-    if (!entry) {
-      logger.warn(`Modem ${device.serialNumber} не запущен`);
-      return;
-    }
-
-    const modem = entry.modem;
 
     await prisma.simCard.update({
       where: { id: sim.id },
@@ -50,7 +38,8 @@ module.exports = async function getCode(
       codeText = await new Promise((resolve, reject) => {
         const timer = setTimeout(() => {
           modem.removeListener("onNewMessage", handler);
-          reject(new Error("Timeout: SMS не пришло за 60 секунд"));
+          logger.error({ port, imei, phone }, `Timeout: SMS не пришло за 60 секунд`);
+          reject();
         }, 60_000);
 
         const handler = async (messages) => {
@@ -63,7 +52,7 @@ module.exports = async function getCode(
           try {
             await _saveIncoming(entry, { sender, dateTimeSent, message });
           } catch (e) {
-            logger.error({ err: e }, "Ошибка сохранения SMS из getCode");
+            logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
           }
 
           resolve(message);
@@ -72,7 +61,7 @@ module.exports = async function getCode(
         modem.once("onNewMessage", handler);
       });
     } catch (e) {
-      logger.warn({ err: e }, `Ошибка при ожидании кода от SIM ${phone}`);
+      logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании кода от SIM ${phone}`);
     }
 
     await prisma.simCard
@@ -80,16 +69,16 @@ module.exports = async function getCode(
         where: { id: sim.id },
         data: { busy: false },
       })
-      .catch((err) =>
-        logger.warn({ err }, `Ошибка при снятии busy-флага для SIM ${phone}`),
+      .catch((e) =>
+        logger.error({ port, imei, phone, error: e }, `Ошибка при снятии busy-флага для SIM ${phone}`),
       );
 
-    await _deleteMessages(modem).catch((err) =>
-      logger.warn({ err }, `Ошибка при удалении сообщений на SIM ${phone}`),
+    await _deleteMessages(modem, entry).catch((e) =>
+      logger.warn({ port, imei, phone, error: e }, `Ошибка при удалении сообщений на SIM ${phone}`),
     );
 
     return codeText;
-  } catch (err) {
-    logger.error({ err }, `getCode(${phone}): необработанная ошибка`);
+  } catch (e) {
+    logger.error({ port, imei, phone, error: e }, `getCode(${phone}): необработанная ошибка`);
   }
 };

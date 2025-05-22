@@ -79,19 +79,18 @@ router.get("/balance", async (ctx) => {
 
 // Отправка SMS: POST /send
 router.post("/send", async (ctx) => {
-  const { from, to, text } = ctx.request.body;
+  const from = ctx.query.from;
+  const {to, text } = ctx.request.body;
   if (!to || !text) {
     ctx.status = 400;
     ctx.body = { error: "to и text обязательны" };
     return;
   }
   try {
-    const resp = await manager.sendSMSByPhone(from, to, text);
-    if (resp == "minus balance") {
-      ctx.body = { phone: from, status: "Недостаточно средств" };
-    } else {
-      ctx.body = { phone: from, status: resp.data.response };
-    }
+    let resp
+    from ? resp = await manager.sendSMSByPhone(from, to, text) : resp = await manager.sendSMS(to, text)
+    console.log(resp)
+    ctx.body = { status: resp.data.response };
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };

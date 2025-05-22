@@ -34,19 +34,30 @@ let options = {
 
 modem.open("/dev/ttyUSB1", options, {});
 
-modem.on("open", (data) => {
+modem.on("open", async(data) => {
   // initialize modem
-  modem.initializeModem((data) => {
-    console.log("Modem initialized");
+  await new Promise((resolve, reject) => {
+    modem.initializeModem((data) => {
+      console.log("MODEM INIT: ", data)
+      resolve()
+    });
+  })
+
+  modem.deleteAllSimMessages((data) => {
+    console.log(data);
+  });
+
+  modem.getNetworkSignal((callback) => {
+    console.log("GET NETWORK SIGNAL: ", callback);
   });
 
   modem.getSimInbox((data) => {
     console.log(data);
   });
 
-  // modem.getNetworkSignal((callback) => {
-  //   console.log("GET NETWORK SIGNAL: ", callback);
-  // });
+  modem.getNetworkSignal((callback) => {
+    console.log("GET NETWORK SIGNAL: ", callback);
+  });
 
   modem.deleteAllSimMessages((data) => {
     console.log(data);
@@ -64,9 +75,9 @@ modem.on("open", (data) => {
     // modem.close();
   });
 
-  // modem.sendUSSD("*111*0887#", (data) => {
-  //   console.log("Send SMS Data: ", data.status);
-  // });
+  modem.sendUSSD("*111*0887#", (data) => {
+    console.log("Send SMS Data: ", data.status);
+  });
 
   // modem.sendUSSD("*100#", (data) => {
   //   console.log("Send SMS Data: ", { data });

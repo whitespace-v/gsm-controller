@@ -1,40 +1,61 @@
 const prisma = require("../../utils/db");
 const logger = require("../../utils/logger");
 
-module.exports = async function sendSMSByPhone(
-  entry,
+module.exports = async function sendSMS(
   to,
   text,
+  modems,
   _deleteMessages,
 ) {
   try {
-    const phone = entry.phone
-    const modem = entry.modem
-    const port = entry.port
-    const imei = entry.imei
     const operation = "sms send"
+    let phone
+    let modem
+    let port
+    let imei
+    let sim
 
-    console.log("SMS HAS ENTRY: ", port)
-
-
-    sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: phone, status: "active" },
+    sim = await prisma.simCard.findFirst({
+        where: { status: "active", busy: false, lastUsedAt: null },
     });
 
     if (!sim) {
-      logger.error({ port, imei, phone, operation}, `SIM ${phone} не зарегистрирована`);
-      return;
+      sim = await prisma.simCard.findFirst({
+        where: { status: "active", busy: false },
+          orderBy: { lastUsedAt: "asc" },
+      });
     }
-    if (sim.busy) {
-      logger.warn({ port, imei, phone, operation}, `SIM ${phone} в данный момент используется`);
+
+    if (!sim) {
+      logger.warn({operation}, "Нет свободных SIM-карт для отправки");
       return;
     }
 
     console.log("PHONE NUMBER SEND: ", sim.phoneNumber);
 
 
+    const device = await prisma.modemDevice.findFirst({
+      where: { currentSimId: sim.id },
+    });
+
+    if (!device) {
+      logger.warn({operation}, `SIM ${phone} не привязана ни к одному модему`);
+      return;
+    }
+
+    entry = modems.get(device.serialNumber);
+    if (!entry) {
+      logger.warn({operation}, `Модем на порту ${device.serialNumber} не запущен`);
+      return;
+    }
+
     console.log("NEW ENTRY: ", entry)
 
+
+    port = entry.port
+    phone = entry.phone
+    imei = entry.imei
+    modem = entry.modem
 
     await prisma.simCard.update({
       where: { id: sim.id },
@@ -52,10 +73,6 @@ module.exports = async function sendSMSByPhone(
       await prisma.simCard.update({
         where: { id: sim.id },
         data: { lastUsedAt: new Date() },
-      });
-
-      const device = await prisma.modemDevice.findFirst({
-        where: { currentSimId: sim.id },
       });
 
       // ✅ Запись в таблицу SmsOutgoingHistory
@@ -93,10 +110,10 @@ module.exports = async function sendSMSByPhone(
           data: { busy: false },
         })
         .catch((e) =>
-          logger.warn({ port, imei, phone, operation, error: {e} }, `Ошибка при снятии busy-флага для SIM ${phone}`),
+          logger.warn(`Ошибка при снятии busy-флага для SIM ${phone}`),
         );
     }
   } catch (e) {
-    logger.error({ port, imei, phone, operation, error: {e}}, "sendSMSByPhone: необработанная ошибка");
+    logger.error("sendSMS: необработанная ошибка");
   }
 };
