@@ -28,7 +28,7 @@ class ModemManager {
   }
 
   // Утилита для паузы
-  sleep(ms = 3000) {
+  sleep(ms = 4000) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
