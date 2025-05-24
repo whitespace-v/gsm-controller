@@ -10,7 +10,7 @@ require("./utils/shutdown");
 const manager = new ModemManager();
 
 const options = {
-  baudRate: 19200,
+  baudRate: 9600,
   dataBits: 8,
   stopBits: 1,
   parity: "none",

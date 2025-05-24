@@ -187,6 +187,8 @@ class ModemManager {
 
     // Обработчик успешного открытия
     modem.on("open", async () => {
+      await this.sleep();
+
       // 1) Инициализация модема
       modem.initializeModem(async (msg, e) => { 
         if (e) {
@@ -251,6 +253,7 @@ class ModemManager {
             logger.info(this.loggerFields(entry), "Прочитан номер SIM (retry)");
           } catch (e) {
             logger.error(this.loggerFields(entry, e), "Не удалось получить номер SIM второй раз");
+            if (modem) modem.close()
           }
         }
 
