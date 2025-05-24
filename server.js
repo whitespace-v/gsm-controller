@@ -10,7 +10,7 @@ require("./utils/shutdown");
 const manager = new ModemManager();
 
 const options = {
-  baudRate: 9600,
+  baudRate: 19200,
   dataBits: 8,
   stopBits: 1,
   parity: "none",
@@ -23,7 +23,7 @@ const options = {
   incomingCallIndication: true,
   incomingSMSIndication: true,
   pin: "",
-  customInitCommand: "",
+  customInitCommand: "AT^CURC=0",
   cnmiCommand: "AT+CNMI=2,1,0,2,1",
   logger: console,
 };
@@ -80,16 +80,18 @@ router.get("/balance", async (ctx) => {
 // Отправка SMS: POST /send
 router.post("/send", async (ctx) => {
   const from = ctx.query.from;
-  const {to, text } = ctx.request.body;
+  const { to, text } = ctx.request.body;
   if (!to || !text) {
     ctx.status = 400;
     ctx.body = { error: "to и text обязательны" };
     return;
   }
   try {
-    let resp
-    from ? resp = await manager.sendSMSByPhone(from, to, text) : resp = await manager.sendSMS(to, text)
-    console.log(resp)
+    let resp;
+    from
+      ? (resp = await manager.sendSMSByPhone(from, to, text))
+      : (resp = await manager.sendSMS(to, text));
+    console.log(resp);
     ctx.body = { status: resp.data.response };
   } catch (e) {
     ctx.status = 500;

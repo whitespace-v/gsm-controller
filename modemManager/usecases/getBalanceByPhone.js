@@ -1,112 +1,101 @@
+// usecases/getBalanceByPhone.js
 const prisma = require("../../utils/db");
 const logger = require("../../utils/logger");
 
-// Преобразование текста баланса в число
-function _parseBalance(input) {
-  input = input.trim();                                // Удаление пробелов
-  let isNegative = input.includes("Минус:");           // Проверка на отрицательное значение
-  let cleaned = input
-    .replace("Минус:", "")                             // Удаление префикса
-    .replace("Баланс:", "")
-    .replace("р", "")
-    .replace(",", ".")                                 // Замена запятой на точку
-    .trim();
-
-  return isNegative ? `-${cleaned}` : cleaned;         // Добавление знака, если нужно
-}
-
-module.exports = async function getBalanceByPhone(
-  entry,
-  _deleteMessages,
-) {
-
-  let sim;       // Объект SIM-карты
-  let resp;      // Ответ от модема
-  const phone = entry.phone
-  const modem = entry.modem
-  const port = entry.port
-  const imei = entry.imei
-  const operation = "get balance"
+/**
+ * Получение баланса по SIM и очистка сообщений после запроса
+ * @param {{port:string,imei:string,phone:string,modem:object}} entry — данные модема
+ * @param {Function} _deleteMessages — функция для удаления входящих SMS
+ * @returns {string|undefined} баланс или 'busy' если SIM занята
+ */
+module.exports = async function getBalanceByPhone(entry, _deleteMessages) {
+  const { port, imei, phone, modem } = entry;                  // данные модема
+  const operation = "getBalanceByPhone";                      // метка операции
+  let sim, resp;
 
   try {
-    // Получение SIM по номеру
+    // 1) Найти активную SIM по номеру
     sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: phone, status: "active" },
+      where: { phoneNumber: phone, status: "active" }
     });
-
     if (!sim) {
-      logger.warn({ port, imei, phone, operation }, `SIM ${phone} не зарегистрирована`);
+      logger.warn({ port, imei, phone, operation }, `SIM ${phone} не найдена`);
       return;
     }
-
+    // 2) Проверить, не занята ли SIM
     if (sim.busy) {
       logger.warn({ port, imei, phone, operation }, `SIM ${phone} занята`);
       return "busy";
     }
 
-    // Помечаем SIM как занятую
+    // 3) Пометить SIM как занятую
     await prisma.simCard.update({
       where: { id: sim.id },
-      data: { busy: true },
+      data:  { busy: true }
     });
 
-    // Вложенная функция запроса баланса
+    // 4) Запрос баланса через USSD с таймаутом
     async function requestBalance() {
       return new Promise((resolve, reject) => {
         const timer = setTimeout(() => {
-          modem.removeAllListeners("onNewIncomingUSSD");       // Удаляем слушатель при таймауте
-          logger.error({ port, imei, phone, operation }, "USSD timeout")
-          reject();                   // Отказ по таймауту
-        }, 15000); // 15 секунд
+          modem.removeAllListeners("onNewIncomingUSSD");         // снимаем слушатель
+          logger.error({ port, imei, phone, operation }, "USSD timeout");
+          reject(new Error("USSD timeout"));
+        }, 15_000);
 
-        modem.once("onNewIncomingUSSD", (data) => {            // Однократный обработчик события
-          clearTimeout(timer);                                 // Очищаем таймер
-          resolve(data);                                       // Возвращаем данные
+        modem.once("onNewIncomingUSSD", data => {                // одноразовый слушатель
+          clearTimeout(timer);                                    // отменяем таймер
+          resolve(data);
         });
 
-        modem.sendUSSD("*100#", () => {});                     // Отправляем USSD-запрос
+        modem.sendUSSD("*100#", () => {});                      // отправляем USSD
       });
     }
 
-    resp = await requestBalance();                             // Первая попытка запроса
+    // Первая попытка
+    resp = await requestBalance();
 
-    // Если запрос был прерван сетью — повторяем
+    // 5) Если сеть прервала запрос — повторяем
     if (resp?.data?.follow === "terminated by network") {
-      logger.warn({ port, imei, phone, operation }, "Первый запрос USSD завершён сетью, повторяем попытку");
-      resp = await requestBalance();                           // Вторая попытка
+      logger.warn({ port, imei, phone, operation },
+                  "USSD прерван сетью, повторный запрос");
+      resp = await requestBalance();
     }
 
-    console.log("RESPONSE BALANCE: ", resp);
+    // 6) Преобразование текста в число
+    const raw = resp.data.text.trim()
+                    .replace("Минус:", "-")
+                    .replace("Баланс:", "")
+                    .replace("р", "")
+                    .replace(/,/, ".");
+    const current_balance = raw;                                 // строка с балансом
 
-    const current_balance = _parseBalance(resp.data.text);     // Парсим текст баланса
+    logger.info({ port, imei, phone, operation },
+                `Баланс SIM ${phone}: ${current_balance}`);
 
-    logger.info({ port, imei, phone, operation }, `Баланс для SIM ${entry.phone}: ${current_balance}`);
-
-    // Обновляем SIM-карту: снимаем busy и сохраняем баланс
+    // 7) Сохранить баланс и снять флаг busy
     await prisma.simCard.update({
       where: { id: sim.id },
-      data: { busy: false, current_balance },
+      data:  { busy: false, current_balance }
     });
 
-    await _deleteMessages(entry);                              // Удаляем сообщения с SIM
+    // // 8) Очистить входящие сообщения
+    // await _deleteMessages(entry);
 
-    return current_balance;                                    // Возвращаем результат
-  } catch (e) {
-    console.log("ОШИБКА БАЛАНСА", e)
-
-    // Если SIM была найдена — сбрасываем флаг busy
+    return current_balance;                                      // вернуть баланс
+  } catch (error) {
+    // 9) В случае ошибки — сбросить флаг busy
     if (sim) {
-      await prisma.simCard.update({
-        where: { id: sim.id },
-        data: { busy: false },
-      });
+      await prisma.simCard.update({ where: { id: sim.id }, data: { busy: false } });
     }
 
-    // Отдельная обработка для случая прерывания сетью
+    // 10) Логирование разных причин ошибки
     if (resp?.data?.follow === "terminated by network") {
-      logger.error({ port, imei, phone, operation }, "Все запросы USSD завершены сетью");
+      logger.error({ port, imei, phone, operation },
+                   "USSD прерывается сетью повторно");
     } else {
-      logger.error({ port, imei, phone, operation, error: {e}}, `Необработанная ошибка при получении баланса с SIM ${phone}`);
+      logger.error({ port, imei, phone, operation, error },
+                   "Неожиданная ошибка getBalanceByPhone");
     }
   }
 };

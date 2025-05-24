@@ -32,7 +32,7 @@ let options = {
   logger: console,
 };
 
-modem.open("/dev/ttyUSB1", options, {});
+modem.open("/dev/ttyUSB0", options, {});
 
 modem.on("open", async(data) => {
   // initialize modem

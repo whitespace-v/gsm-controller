@@ -1,47 +1,46 @@
+// sendSMSByPhone use case
 const prisma = require("../../utils/db");
 const logger = require("../../utils/logger");
 
+/**
+ * Отправка SMS через конкретный модемный entry
+ * @param {{port:string,imei:string,phone:string,modem:object}} entry — данные модема
+ * @param {string} to — номер получателя
+ * @param {string} text — текст SMS
+ * @param {Function} _deleteMessages — функция очистки входящих сообщений
+ */
 module.exports = async function sendSMSByPhone(
   entry,
   to,
   text,
   _deleteMessages,
 ) {
+  const { port, imei, phone, modem } = entry;                             // параметры модема
+  const operation = "sendSMSByPhone";                                   // метка операции
+
+  let sim;
   try {
-    const phone = entry.phone
-    const modem = entry.modem
-    const port = entry.port
-    const imei = entry.imei
-    const operation = "sms send"
-
-    console.log("SMS HAS ENTRY: ", port)
-
-
+    // 1) Проверка наличия и активности SIM
     sim = await prisma.simCard.findUnique({
-      where: { phoneNumber: phone, status: "active" },
+      where: { phoneNumber: phone, status: "active" },                     
     });
-
     if (!sim) {
-      logger.error({ port, imei, phone, operation}, `SIM ${phone} не зарегистрирована`);
+      logger.error({ port, imei, phone, operation }, `SIM ${phone} не зарегистрирована`);
       return;
     }
     if (sim.busy) {
-      logger.warn({ port, imei, phone, operation}, `SIM ${phone} в данный момент используется`);
+      logger.warn({ port, imei, phone, operation }, `SIM ${phone} занята`);
       return;
     }
 
-    console.log("PHONE NUMBER SEND: ", sim.phoneNumber);
-
-
-    console.log("NEW ENTRY: ", entry)
-
-
+    // 2) Помечаем SIM как занятую
     await prisma.simCard.update({
       where: { id: sim.id },
-      data: { busy: true },
+      data: { busy: true },                                                 
     });
 
     try {
+      // 3) Отправка SMS
       const result = await new Promise((resolve, reject) => {
         modem.sendSMS(to, text, false, (data) => {
           if (data.error) reject(new Error(data.error));
@@ -49,54 +48,55 @@ module.exports = async function sendSMSByPhone(
         });
       });
 
+      // 4) Обновление времени последнего использования
       await prisma.simCard.update({
         where: { id: sim.id },
-        data: { lastUsedAt: new Date() },
+        data: { lastUsedAt: new Date() },                                     
       });
 
+      // 5) Запись успешной отправки в историю
       const device = await prisma.modemDevice.findFirst({
         where: { currentSimId: sim.id },
       });
-
-      // ✅ Запись в таблицу SmsOutgoingHistory
       await prisma.smsOutgoingHistory.create({
         data: {
-          simCardId: sim.id,
+          simCardId:     sim.id,
           modemDeviceId: device.id,
-          recipient: to,
+          recipient:     to,
           text,
-          status: "sent",
+          status:        "sent",                                           
         },
       });
 
-      return result;
-    } catch (e) {
-      console.log(e)
-      // logger.error({ port, imei, phone, operation, error: {e} }, `Ошибка при отправке SMS через SIM ${phone}`,);
-
-      // ❗ Запись ошибки в историю
+      return result;                                                        
+    } catch (sendError) {
+      // 6) В случае ошибки — пишем в историю с статусом error
+      const device = await prisma.modemDevice.findFirst({
+        where: { currentSimId: sim.id },
+      });
       await prisma.smsOutgoingHistory.create({
         data: {
-          simCardId: sim.id,
+          simCardId:     sim.id,
           modemDeviceId: device.id,
-          recipient: to,
+          recipient:     to,
           text,
-          status: "error",
+          status:        "error",                                          
         },
       });
     } finally {
-      await _deleteMessages(entry);
-
-      await prisma.simCard
-        .update({
-          where: { id: sim.id },
-          data: { busy: false },
-        })
-        .catch((e) =>
-          logger.warn({ port, imei, phone, operation, error: {e} }, `Ошибка при снятии busy-флага для SIM ${phone}`),
-        );
+      // 7) Всегда очищаем входящие и снимаем busy-флаг
+      await _deleteMessages(entry);                                        
+      await prisma.simCard.update({
+        where: { id: sim.id },
+        data: { busy: false },                                              
+      }).catch((err) =>
+        logger.warn({ port, imei, phone, operation, error: err },
+                    `Ошибка снятия busy для SIM ${phone}`)
+      );
     }
-  } catch (e) {
-    logger.error({ port, imei, phone, operation, error: {e}}, "sendSMSByPhone: необработанная ошибка");
+  } catch (err) {
+    // 8) Лог непредвиденных ошибок
+    logger.error({ port, imei, phone, operation, error: err },
+                 "sendSMSByPhone: необработанная ошибка");
   }
 };
