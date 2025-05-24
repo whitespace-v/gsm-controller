@@ -23,7 +23,7 @@ class ModemManager {
 
   // Формирует объект для логирования
   loggerFields(entry = {}, error = null) {
-    const base = { port: entry.port, imei: entry.imei, phone: entry.phone };
+    const base = { port: entry?.port, imei: entry?.imei, phone: entry?.phone };
     return error ? { ...base, error } : base;
   }
 
