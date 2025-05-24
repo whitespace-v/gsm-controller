@@ -210,15 +210,6 @@ class ModemManager {
           }
         });
 
-        await this.sleep();
-        modem.getOwnNumber((result, err) => {
-          if (err) {
-            console.log(`Error retrieving own Number - ${err}`);
-          } else {
-            console.log(`Own number: ${JSON.stringify(result)}`);
-          }
-        });
-
           // 2) Включение PDU-режима
         await this.sleep();
         await new Promise(res => modem.setModemMode(() => { logger.info(this.loggerFields(entry), "Включен PDU режим"); res(); }, "PDU"));
@@ -260,7 +251,6 @@ class ModemManager {
             logger.info(this.loggerFields(entry), "Прочитан номер SIM (retry)");
           } catch (e) {
             logger.error(this.loggerFields(entry, e), "Не удалось получить номер SIM второй раз");
-            return modem.close();
           }
         }
 
