@@ -47,7 +47,7 @@ class ModemManager {
   }
 
   // Запрос номера SIM через USSD
-  _getSubscriberNumber(entry, timeout = 30_000, retry = 1) {
+  async _getSubscriberNumber(entry, timeout = 30_000, retry = 1) {
     const { modem } = entry;
     return new Promise((resolve, reject) => {
       const onNewMessage = (msgs) => {
