@@ -56,14 +56,12 @@ class ModemManager {
         const text = msgs[0]?.message || "";
         const match = text.match(/\+?\d{7,15}/);
         if (match) return resolve(match[0]);
-        if (retry === 2) modem.close();
         logger.error(this.loggerFields(entry), "Не нашли номер в тексте USSD-ответа");
         reject(new Error("No subscriber number"));
       };
 
       const onTimeout = () => {
         modem.removeListener("onNewMessage", onNewMessage);
-        if (retry === 2) modem.close();
         logger.warn(this.loggerFields(entry), "Timeout при получении номера SIM");
         reject(new Error("Subscriber timeout"));
       };
@@ -74,7 +72,6 @@ class ModemManager {
         if (data?.status === "fail") {
           clearTimeout(timer);
           modem.removeListener("onNewMessage", onNewMessage);
-          if (retry === 2) modem.close();
           logger.error(this.loggerFields(entry), "USSD-запрос не прошёл: fail");
           reject(new Error("USSD fail"));
         }
@@ -193,11 +190,16 @@ class ModemManager {
       modem.initializeModem(async (msg, e) => { 
         if (e) {
           logger.error(this.loggerFields(entry, e), "Не удалось инициализировать модем");
-          modem.close()
-          return
+          return modem.close()
         }
 
+        console.log(msg)
+
         logger.info(this.loggerFields(entry), "Модем инициализирован");
+
+        // 2) Включение PDU-режима
+        await this.sleep();
+        modem.setModemMode(() => { logger.info(this.loggerFields(entry), "Включен PDU режим")}, "PDU")
 
 
         // get the Network signal strength
@@ -212,13 +214,9 @@ class ModemManager {
           }
         });
 
-          // 2) Включение PDU-режима
-        await this.sleep();
-        await new Promise(res => modem.setModemMode(() => { logger.info(this.loggerFields(entry), "Включен PDU режим"); res(); }, "PDU"));
-
         // 3) Очистка входящих
         await this.sleep();
-        await new Promise(res => modem.getSimInbox(async (data) => { if (Array.isArray(data) && data.length) await this._deleteMessages(entry); res(); }));
+        modem.getSimInbox(async (data) => { if (Array.isArray(data) && data.length) await this._deleteMessages(entry);})
 
         // 4) Сброс счётчиков при первом open
         if (!entry.initialized) {
@@ -250,10 +248,10 @@ class ModemManager {
           await this.sleep();
           try {
             entry.phone = `+${await this._getSubscriberNumber(entry, 20_000, 2)}`;
-            logger.info(this.loggerFields(entry), "Прочитан номер SIM (retry)");
+            logger.info(this.loggerFields(entry), "Прочитан номер SIM co второго раза");
           } catch (e) {
             logger.error(this.loggerFields(entry, e), "Не удалось получить номер SIM второй раз");
-            if (modem) modem.close()
+            return modem.close()
           }
         }
 
