@@ -39,8 +39,8 @@ router.get("/", (ctx) => {
   ctx.body = { status: "ok" };
 });
 
-// Получить код SMS: GET /sms?from=+7914...
-router.get("/sms", async (ctx) => {
+// Получить код: GET /code?from=+7914...
+router.get("/code", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
     ctx.status = 400;
@@ -50,6 +50,23 @@ router.get("/sms", async (ctx) => {
   try {
     const code = await manager.getCode(from);
     ctx.body = { phone: from, code: code };
+  } catch (e) {
+    ctx.status = 500;
+    ctx.body = { error: e.message };
+  }
+});
+
+// Получить SMS: GET /code?from=+7914...
+router.get("/sms", async (ctx) => {
+  const from = ctx.query.from;
+  if (!from) {
+    ctx.status = 400;
+    ctx.body = { error: "Нужно указать from" };
+    return;
+  }
+  try {
+    const sms = await manager.getMessage(from);
+    ctx.body = { phone: from, sender: sms.sender, message: sms.message};
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };

@@ -32,10 +32,8 @@ module.exports = async function getCode(
       data: { busy: true },
     });
 
-    let codeText;
-
     try {
-      codeText = await new Promise((resolve, reject) => {
+      messageText = await new Promise((resolve, reject) => {
         const timer = setTimeout(() => {
           modem.removeListener("onNewMessage", handler);
           logger.error({ port, imei, phone }, `Timeout: SMS не пришло за 60 секунд`);
@@ -55,13 +53,13 @@ module.exports = async function getCode(
             logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
           }
 
-          resolve(message);
+          resolve(msg);
         };
 
         modem.once("onNewMessage", handler);
       });
     } catch (e) {
-      logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании кода от SIM ${phone}`);
+      logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании сообщения от SIM ${phone}`);
     }
 
     await prisma.simCard
@@ -77,8 +75,8 @@ module.exports = async function getCode(
     //   logger.warn({ port, imei, phone, error: e }, `Ошибка при удалении сообщений на SIM ${phone}`),
     // );
 
-    return codeText;
+    return messageText;
   } catch (e) {
-    logger.error({ port, imei, phone, error: e }, `Необработанная ошибка при получении кода`);
+    logger.error({ port, imei, phone, error: e }, `Необработанная ошибка при получении сообщения`);
   }
 };

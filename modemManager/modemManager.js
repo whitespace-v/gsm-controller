@@ -4,6 +4,7 @@ const getBalanceByPhone            = require("./usecases/getBalanceByPhone.js");
 const sendSMSByPhone               = require("./usecases/sendSMSByPhone.js");
 const sendSMS                      = require("./usecases/sendSMS.js");
 const getCode                      = require("./usecases/getCode.js");
+const getMessage                   = require("./usecases/getMessage.js");
 const ussd                         = require("serialport-gsm/lib/functions/ussd.js");
 const prisma                       = require("../utils/db");
 const logger                       = require("../utils/logger");
@@ -28,8 +29,30 @@ class ModemManager {
   }
 
   // Утилита для паузы
-  sleep(ms = 4000) {
+  async sleep(ms = 4000) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  // Обнаружение и инициализация модемов
+  addModems(options) {
+    serialportgsm.list((err, devices) => {
+      if (err) {
+        logger.error({ err }, "Не удалось получить список портов");
+        return;
+      }
+      devices.forEach((dev) => {
+        if (!dev.pnpId) return;
+        logger.info({ port: dev.path }, "Найден GSM-модем");
+        this._addModem(dev.path, options);
+      });
+    });
+  }
+
+  // Добавление одного модема в менеджер
+  async _addModem(port, options) {
+    const entry = { port, options, reconnectDelay: DEFAULT_RECONNECT_DELAY, retryCount: 0, imei: null, phone: null };
+    this.modems.set(port, entry);
+    await this._createAndOpen(entry);
   }
 
   // Получение IMEI из модема
@@ -47,7 +70,7 @@ class ModemManager {
   }
 
   // Запрос номера SIM через USSD
-  async _getSubscriberNumber(entry, timeout = 30_000, retry = 1) {
+  async _getSubscriberNumber(entry, timeout = 50_000, retry = 1) {
     const { modem } = entry;
     return new Promise((resolve, reject) => {
       const onNewMessage = (msgs) => {
@@ -79,28 +102,6 @@ class ModemManager {
     });
   }
 
-  // Обнаружение и инициализация модемов
-  addModems(options) {
-    serialportgsm.list((err, devices) => {
-      if (err) {
-        logger.error({ err }, "Не удалось получить список портов");
-        return;
-      }
-      devices.forEach((dev) => {
-        if (!dev.pnpId) return;
-        logger.info({ port: dev.path }, "Найден GSM-модем");
-        this._addModem(dev.path, options);
-      });
-    });
-  }
-
-  // Добавление одного модема в менеджер
-  async _addModem(port, options) {
-    const entry = { port, options, reconnectDelay: DEFAULT_RECONNECT_DELAY, retryCount: 0, imei: null, phone: null };
-    this.modems.set(port, entry);
-    await this._createAndOpen(entry);
-  }
-
   // Сохранение входящего SMS в БД
   async _saveIncoming(entry, { sender, dateTimeSent, message }) {
     const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
@@ -115,8 +116,26 @@ class ModemManager {
       await new Promise((resolve, reject) => entry.modem.deleteAllSimMessages((data) => data ? resolve() : reject()));
       logger.info(this.loggerFields(entry), "Сообщения успешно удалены");
     } catch (e) {
-      logger.warn(this.loggerFields(entry, e), "Ошибка при удалении сообщений");
+      logger.error(this.loggerFields(entry, e), "Ошибка при удалении сообщений");
     }
+  }
+
+  async _getVendor(entry) {
+    const { modem } = entry;
+    return new Promise((resolve, reject) => {
+      modem.executeCommand('AT+COPS?', (result, err) => {
+        if (err) {
+          logger.error(this.loggerFields(entry, e), "Ошибка при получении вендора");
+          reject()
+        } else {
+          let resultStr = result.data.result;
+          let match = resultStr.match(/"([^"]+)"/);
+          let vendor = match ? match[1] : null;
+          logger.info(this.loggerFields(entry), `Вендор: ${vendor}`);
+          resolve(vendor)
+        }
+      });
+    });
   }
 
   // Получить entry по номеру SIM
@@ -190,16 +209,19 @@ class ModemManager {
       modem.initializeModem(async (msg, e) => { 
         if (e) {
           logger.error(this.loggerFields(entry, e), "Не удалось инициализировать модем");
-          return modem.close()
+          try {
+            modem.close();
+          } catch (error) {
+            logger.error(this.loggerFields(entry, error), "Ошибка при закрытии модема");
+          }
+          return
         }
-
-        console.log(msg)
 
         logger.info(this.loggerFields(entry), "Модем инициализирован");
 
         // 2) Включение PDU-режима
         await this.sleep();
-        modem.setModemMode(() => { logger.info(this.loggerFields(entry), "Включен PDU режим")}, "PDU")
+        modem.setModemMode((msg) => { logger.info(this.loggerFields(entry), "Включен PDU режим")}, "PDU")
 
 
         // get the Network signal strength
@@ -207,16 +229,15 @@ class ModemManager {
         modem.getNetworkSignal((result, e) => {
           if (e) {
             logger.error(this.loggerFields(entry, e), "Не удалось инициализировать модем");
-            modem.close()
-            return
+            return modem.close()
           } else {
-            console.log(`Signal Strength: ${JSON.stringify(result)}`);
+            logger.info(this.loggerFields(entry), `Signal Strength: ${JSON.stringify(result.data)}`)
           }
         });
 
         // 3) Очистка входящих
         await this.sleep();
-        modem.getSimInbox(async (data) => { if (Array.isArray(data) && data.length) await this._deleteMessages(entry);})
+        await this._deleteMessages(entry)
 
         // 4) Сброс счётчиков при первом open
         if (!entry.initialized) {
@@ -255,6 +276,11 @@ class ModemManager {
           }
         }
 
+        let vendor = await this._getVendor(entry)
+        console.log("ВЕНДОР: ", vendor)
+        vendor = vendor ? vendor : "unknown";
+        console.log("ВЕНДОР: ", vendor)
+
         // 7) Upsert устройств в БД
         const device = await prisma.modemDevice.upsert({
           where: { imei: entry.imei },
@@ -266,17 +292,13 @@ class ModemManager {
         if (entry.phone) {
           const sim = await prisma.simCard.upsert({
             where: { phoneNumber: entry.phone },
-            update:{ status: "active", busy: false },
-            create:{ phoneNumber: entry.phone, provider: "unknown", status: "active" }
+            update:{ status: "active", provider: vendor, busy: false },
+            create:{ phoneNumber: entry.phone, provider: vendor, status: "active" }
           });
           await prisma.modemDevice.update({ where:{ id: device.id }, data:{ currentSimId: sim.id } });
           await prisma.modemSimHistory.create({ data:{ modemId: device.id, simId: sim.id } });
         }
 
-        await this.sleep();
-
-
-        await this.sleep();
         // 9) Проверка баланса
         await this.getBalanceByPhone(entry.phone);
       });
@@ -316,7 +338,11 @@ class ModemManager {
 
     // Глобальный хендлер ошибок модема
     modem.on("error", (e) => {
-      modem.close();
+      try {
+        modem.close();
+      } catch (error) {
+        logger.error(this.loggerFields(entry, error), "Ошибка при закрытии модема");
+      }
       logger.error(this.loggerFields(entry, e), "Ошибка модема");
     });
 
@@ -330,6 +356,11 @@ class ModemManager {
   async getCode(phone) {
     const entry = await this._getEntry(phone);
     return getCode(entry, this._saveIncoming.bind(this), this._deleteMessages.bind(this));
+  }
+
+  async getMessage(phone) {
+    const entry = await this._getEntry(phone);
+    return getMessage(entry, this._saveIncoming.bind(this), this._deleteMessages.bind(this));
   }
 
   async sendSMSByPhone(fromPhone, to, text) {

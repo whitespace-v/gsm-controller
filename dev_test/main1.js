@@ -32,55 +32,84 @@ let options = {
   logger: console,
 };
 
-modem.open("/dev/ttyUSB1", options, {});
+modem.open("/dev/ttyUSB0", options, {});
+
+async function sleep(ms = 4000) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 
 modem.on("open", async(data) => {
-  modem.deleteAllSimMessages((data) => {
-    console.log(data);
-  });
-  // initialize modem
-  await new Promise((resolve, reject) => {
-    modem.initializeModem((data) => {
-      console.log("MODEM INIT: ", data)
-      resolve()
-    });
-  })
-
-  modem.getNetworkSignal((callback) => {
-    console.log("GET NETWORK SIGNAL: ", callback);
+  modem.executeCommand('AT+CREG?', (result, err) => {
+    if (err) {
+      console.log(`Error - ${err}`);
+    } else {
+      console.log(`Result ${JSON.stringify(result)}`);
+    }
   });
 
-  modem.getSimInbox((data) => {
-    console.log(data);
+  modem.executeCommand('AT+COPS?', (result, err) => {
+    if (err) {
+      console.log(`Error - ${err}`);
+    } else {
+      let resultStr = result.data.result;
+      let match = resultStr.match(/"([^"]+)"/);
+      let value = match ? match[1] : null;
+      console.log("Вендор: ", value);
+    }
   });
 
-  modem.getNetworkSignal((callback) => {
-    console.log("GET NETWORK SIGNAL: ", callback);
+  modem.executeCommand('AT+CGREG?', (result, err) => {
+    if (err) {
+      console.log(`Error - ${err}`);
+    } else {
+      console.log(`Result ${JSON.stringify(result)}`);
+    }
   });
 
-  modem.deleteAllSimMessages((data) => {
-    console.log(data);
-  });
+  sleep()
 
-  modem.on("onNewIncomingUSSD", (data) => {
-    console.log("New Incoming USSD: ", { data });
-  });
 
-  modem.on("onNewMessage", (data) => {
-    const firstMsg = data[0].message;
-    const phone = firstMsg.match(/\d+/)[0];
-    console.log("New Message: ", data);
-    console.log("New phone: ", phone);
-    // modem.close();
-  });
+  // modem.deleteAllSimMessages((data) => {
+  //   console.log(data);
+  // });
+  // // initialize modem
+  // await new Promise((resolve, reject) => {
+  //   modem.initializeModem((data) => {
+  //     console.log("MODEM INIT: ", data)
+  //     resolve()
+  //   });
+  // })
+
+  // modem.getNetworkSignal((callback) => {
+  //   console.log("GET NETWORK SIGNAL: ", callback);
+  // });
+
+  // modem.getSimInbox((data) => {
+  //   console.log(data);
+  // });
+
+
+  // modem.on("onNewIncomingUSSD", (data) => {
+  //   console.log("New Incoming USSD: ", { data });
+  // });
+
+  // modem.on("onNewMessage", (data) => {
+  //   const firstMsg = data[0].message;
+  //   const phone = firstMsg.match(/\d+/)[0];
+  //   console.log("New Message: ", data);
+  //   console.log("New phone: ", phone);
+  //   // modem.close();
+  // });
+
+  // sleep()
 
   // modem.sendUSSD("*111*0887#", (data) => {
   //   console.log("Send SMS Data: ", data.status);
   // });
 
-  modem.sendUSSD("*100#", (data) => {
-    console.log("Send SMS Data: ", { data });
-  });
+  // modem.sendUSSD("*100#", (data) => {
+  //   console.log("Send SMS Data: ", { data });
+  // });
 
   // modem.getModemSerial((data) => {
   //   console.log(data.data.modemSerial);
