@@ -61,16 +61,6 @@ module.exports = async function getCode(
     } catch (e) {
       logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании сообщения от SIM ${phone}`);
     }
-
-    await prisma.simCard
-      .update({
-        where: { id: sim.id },
-        data: { busy: false },
-      })
-      .catch((e) =>
-        logger.error({ port, imei, phone, error: e }, `Ошибка при снятии busy-флага для SIM ${phone}`),
-      );
-
     // await _deleteMessages(modem, entry).catch((e) =>
     //   logger.warn({ port, imei, phone, error: e }, `Ошибка при удалении сообщений на SIM ${phone}`),
     // );
@@ -78,5 +68,14 @@ module.exports = async function getCode(
     return messageText;
   } catch (e) {
     logger.error({ port, imei, phone, error: e }, `Необработанная ошибка при получении сообщения`);
+  } finally {
+    await prisma.simCard
+    .update({
+      where: { id: sim.id },
+      data: { busy: false },
+    })
+    .catch((e) =>
+      logger.error({ port, imei, phone, error: e }, `Ошибка при снятии busy-флага для SIM ${phone}`),
+    );
   }
 };

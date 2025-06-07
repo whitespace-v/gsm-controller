@@ -1,5 +1,5 @@
 // modemManager.js
-const getConnectionHistoryByPhone = require("./usecases/getConnectionHistoryByPhone.js");
+// const getConnectionHistoryByPhone = require("../usecases/getConnectionHistoryByPhone.js");
 const getBalanceByPhone            = require("./usecases/getBalanceByPhone.js");
 const sendSMSByPhone               = require("./usecases/sendSMSByPhone.js");
 const sendSMS                      = require("./usecases/sendSMS.js");
@@ -303,6 +303,14 @@ class ModemManager {
         await this.getBalanceByPhone(entry.phone);
       });
 
+      modem.on("onNewMessage", (messages) => {
+        if (messages) {
+          const msg = messages[0];
+          const { sender, message, dateTimeSent } = msg;
+          logger.info(this.loggerFields(entry), `Сообщение sender: ${sender}; message: ${message}`);
+          console.log(message)
+        }
+      });
     });
 
     // Обработчик закрытия порта

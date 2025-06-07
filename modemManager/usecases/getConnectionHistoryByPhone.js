@@ -32,7 +32,7 @@ module.exports = async function getConnectionHistoryByPhone(phone) {
       disconnectedAt: h.disconnectedAt || null,
     }));
   } catch (err) {
-    logger.error({ err }, `getConnectionHistoryByPhone(${phone}): ошибка`);
+    logger.error({ err }, `Ошибка при получении истории подключений`);
     return [];
   }
 };
