@@ -47,14 +47,11 @@ modem.on("open", async(data) => {
     }
   });
 
-  modem.executeCommand('AT+COPS?', (result, err) => {
+  modem.executeCommand('AT+CFUN=1', (result, err) => {
     if (err) {
       console.log(`Error - ${err}`);
     } else {
-      let resultStr = result.data.result;
-      let match = resultStr.match(/"([^"]+)"/);
-      let value = match ? match[1] : null;
-      console.log("Вендор: ", value);
+      console.log("Result: ", result);
     }
   });
 
