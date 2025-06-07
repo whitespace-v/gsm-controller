@@ -39,7 +39,7 @@ async function sleep(ms = 4000) {
 }
 
 modem.on("open", async(data) => {
-  modem.executeCommand('AT+CREG?', (result, err) => {
+  modem.executeCommand('AT+CFUN=1', (result, err) => {
     if (err) {
       console.log(`Error - ${err}`);
     } else {
@@ -47,11 +47,14 @@ modem.on("open", async(data) => {
     }
   });
 
-  modem.executeCommand('AT+CFUN=1', (result, err) => {
+  modem.executeCommand('AT+COPS?', (result, err) => {
     if (err) {
       console.log(`Error - ${err}`);
     } else {
-      console.log("Result: ", result);
+      let resultStr = result.data.result;
+      let match = resultStr.match(/"([^"]+)"/);
+      let value = match ? match[1] : null;
+      console.log("Вендор: ", value);
     }
   });
 
