@@ -16,7 +16,7 @@ module.exports = async function sendSMSByPhone(
   _deleteMessages,
 ) {
   const { port, imei, phone, modem } = entry;                             // параметры модема
-  const operation = "sendSMSByPhone";                                   // метка операции
+  const operation = "Send 2FA code from a specific sim";                                   // метка операции
 
   let sim;
   try {
@@ -67,6 +67,8 @@ module.exports = async function sendSMSByPhone(
           status:        "sent",                                           
         },
       });
+
+      logger.info({ port, imei, phone, operation }, `Отправлен 2FA код ${text}`);
 
       return result;                                                        
     } catch (sendError) {

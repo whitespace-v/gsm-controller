@@ -13,7 +13,7 @@ module.exports = async function getCode(
   const imei = entry.imei
 
   try {
-    sim = await prisma.simCard.findUnique({
+    sim = await prisma.simCard.findFirst({
       where: { phoneNumber: phone, status: "active" },
     });
 
@@ -49,13 +49,33 @@ module.exports = async function getCode(
           const msg = messages[0];
           const { sender, message, dateTimeSent } = msg;
 
-          try {
-            await _saveIncoming(entry, { sender, dateTimeSent, message });
-          } catch (e) {
-            logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
-          }
+          if (sender) {
 
-          resolve(message);
+            let code;
+
+            if (sender == "T-Bank" || sender == "Alfa-Bank") {
+              const regex = /\b\d{4}\b/;
+              const codeMatch = message.match(regex);
+              code = codeMatch[0];
+
+              logger.info({ port, imei, phone, operation }, `Код для входа в ЛК ${sender}: ${code}`);
+            } else {
+              logger.error({ port, imei, phone }, `Сообщение не от банка`);
+              reject();
+            }
+
+            try {
+              await _saveIncoming(entry, { sender, dateTimeSent, code });
+            } catch (e) {
+              logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
+            }
+
+            resolve(code);
+          } else {
+            modem.removeListener("onNewMessage", handler);
+            logger.error({ port, imei, phone, error: e}, "Нет отправителя");
+            reject();
+          }
         };
 
         modem.once("onNewMessage", handler);
@@ -63,9 +83,6 @@ module.exports = async function getCode(
     } catch (e) {
       logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании кода от SIM ${phone}`);
     }
-    // await _deleteMessages(modem, entry).catch((e) =>
-    //   logger.warn({ port, imei, phone, error: e }, `Ошибка при удалении сообщений на SIM ${phone}`),
-    // );
 
     return codeText;
   } catch (e) {

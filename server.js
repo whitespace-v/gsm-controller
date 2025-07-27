@@ -25,7 +25,7 @@ const options = {
   pin: "",
   customInitCommand: "AT^CURC=0",
   cnmiCommand: "AT+CNMI=2,1,0,2,1",
-  logger: console,
+  // logger: console,
 };
 
 // автозапуск всех модемов
@@ -40,7 +40,7 @@ router.get("/", (ctx) => {
 });
 
 // Получить код: GET /code?from=+7914...
-router.get("/code", async (ctx) => {
+router.get("/gsm/api/whale/code", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
     ctx.status = 400;
@@ -56,8 +56,8 @@ router.get("/code", async (ctx) => {
   }
 });
 
-// Получить SMS: GET /code?from=+7914...
-router.get("/sms", async (ctx) => {
+// Получить SMS: GET /sms?from=+7914...
+router.get("/gsm/api/debug/sms", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
     ctx.status = 400;
@@ -74,7 +74,7 @@ router.get("/sms", async (ctx) => {
 });
 
 // Баланс: GET /balance?from=%2B...
-router.get("/balance", async (ctx) => {
+router.get("/gsm/api/debug/balance", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
     ctx.status = 400;
@@ -94,8 +94,26 @@ router.get("/balance", async (ctx) => {
   }
 });
 
+router.get("/gsm/api/debug/allbalances", async (ctx) => {
+  try {
+    ctx.body = await manager.getBalanceByAllPhones();
+  } catch (e) {
+    ctx.status = 500;
+    ctx.body = { error: e.message };
+  }
+});
+
+router.get("/gsm/api/debug/deletemessages", async (ctx) => {
+  try {
+    ctx.body = await manager.deleteMessagesFromAllPhones();
+  } catch (e) {
+    ctx.status = 500;
+    ctx.body = { error: e.message };
+  }
+});
+
 // Отправка SMS: POST /send
-router.post("/send", async (ctx) => {
+router.post("/gsm/api/2fa/send", async (ctx) => {
   const from = ctx.query.from;
   const { to, text } = ctx.request.body;
   if (!to || !text) {
@@ -108,7 +126,6 @@ router.post("/send", async (ctx) => {
     from
       ? (resp = await manager.sendSMSByPhone(from, to, text))
       : (resp = await manager.sendSMS(to, text));
-    console.log(resp);
     ctx.body = { status: resp.data.response };
   } catch (e) {
     ctx.status = 500;
@@ -117,7 +134,7 @@ router.post("/send", async (ctx) => {
 });
 
 // История подключений: GET /history?from=%2B...
-router.get("/history", async (ctx) => {
+router.get("/gsm/api/debug/history", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
     ctx.status = 400;
@@ -133,12 +150,27 @@ router.get("/history", async (ctx) => {
 });
 
 // Принудительный релоад модемов
-router.post("/refresh-modems", (ctx) => {
+router.post("/gsm/api/debug/refreshallmodems", (ctx) => {
   manager.addModems(options);
   ctx.body = { status: "refreshing" };
 });
 
+router.post("/gsm/api/debug/refreshmodems", async (ctx) => {
+  const { phones } = ctx.request.body;
+  if (!phones) {
+    ctx.status = 400;
+    ctx.body = { error: "Нужно указать массив номеров phones" };
+    return;
+  }
+  try {
+    ctx.body = await manager.refreshModem(phones, options);
+  } catch (e) {
+    ctx.status = 500;
+    ctx.body = { error: e.message };
+  }
+});
+
 app.use(bodyParser()).use(router.routes()).use(router.allowedMethods());
 
-const PORT = 3000;
+const PORT = 7777;
 app.listen(PORT, () => logger.info(`Server listening on ${PORT}`));

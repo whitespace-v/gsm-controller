@@ -10,7 +10,7 @@ const logger = require("../../utils/logger");
  * @param {Function} _deleteMessages - функция очистки входящих SMS на модеме
  */
 module.exports = async function sendSMS(to, text, modems, _deleteMessages) {
-  const operation = "sendSMS";                      // идентификатор операции
+  const operation = "Send 2FA code";                      // идентификатор операции
   let entry, sim, device;
 
   try {
@@ -72,6 +72,8 @@ module.exports = async function sendSMS(to, text, modems, _deleteMessages) {
           status:        "sent"
         }
       });
+
+      logger.info({ port, imei, phone, operation }, `Отправлен 2FA код ${text}`);
 
       return result;
     } catch (sendError) {

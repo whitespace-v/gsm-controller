@@ -1,9 +1,12 @@
 // modemManager.js
 // const getConnectionHistoryByPhone = require("../usecases/getConnectionHistoryByPhone.js");
+const deleteMessagesFromAllPhones  = require("./usecases/deleteMessagesFromAllPhones.js");
 const getBalanceByPhone            = require("./usecases/getBalanceByPhone.js");
+const getBalanceByAllPhones        = require("./usecases/getBalanceByAllPhones.js");
 const sendSMSByPhone               = require("./usecases/sendSMSByPhone.js");
 const sendSMS                      = require("./usecases/sendSMS.js");
 const getCode                      = require("./usecases/getCode.js");
+const refreshModem                 = require("./usecases/refreshModem.js");
 const getMessage                   = require("./usecases/getMessage.js");
 const ussd                         = require("serialport-gsm/lib/functions/ussd.js");
 const prisma                       = require("../utils/db");
@@ -277,9 +280,7 @@ class ModemManager {
         }
 
         let vendor = await this._getVendor(entry)
-        console.log("ВЕНДОР: ", vendor)
         vendor = vendor ? vendor : "unknown";
-        console.log("ВЕНДОР: ", vendor)
 
         // 7) Upsert устройств в БД
         const device = await prisma.modemDevice.upsert({
@@ -299,18 +300,11 @@ class ModemManager {
           await prisma.modemSimHistory.create({ data:{ modemId: device.id, simId: sim.id } });
         }
 
+        await this.sleep();
         // 9) Проверка баланса
         await this.getBalanceByPhone(entry.phone);
       });
 
-      modem.on("onNewMessage", (messages) => {
-        if (messages) {
-          const msg = messages[0];
-          const { sender, message, dateTimeSent } = msg;
-          logger.info(this.loggerFields(entry), `Сообщение sender: ${sender}; message: ${message}`);
-          console.log(message)
-        }
-      });
     });
 
     // Обработчик закрытия порта
@@ -382,7 +376,19 @@ class ModemManager {
 
   async getBalanceByPhone(fromPhone) {
     const entry = await this._getEntry(fromPhone);
-    return getBalanceByPhone(entry, this._deleteMessages.bind(this));
+    return getBalanceByPhone(entry);
+  }
+
+  async getBalanceByAllPhones() {
+    return getBalanceByAllPhones(this._getEntry.bind(this));
+  }
+
+  async deleteMessagesFromAllPhones() {
+    return deleteMessagesFromAllPhones(this._deleteMessages.bind(this), this._getEntry.bind(this));
+  }
+
+  async refreshModem(phones, options) {
+    return refreshModem(phones, this._addModem.bind(this), options, this._getEntry.bind(this));
   }
 
   async getConnectionHistoryByPhone(phone) {

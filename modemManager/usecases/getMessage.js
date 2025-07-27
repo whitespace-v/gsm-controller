@@ -41,6 +41,7 @@ module.exports = async function getCode(
         }, 60_000);
 
         const handler = async (messages) => {
+
           clearTimeout(timer);
           modem.removeListener("onNewMessage", handler);
 

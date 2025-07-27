@@ -32,14 +32,14 @@ let options = {
   logger: console,
 };
 
-modem.open("/dev/ttyUSB0", options, {});
+modem.open("/dev/ttyUSB3", options, {});
 
 async function sleep(ms = 4000) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 modem.on("open", async(data) => {
-  modem.executeCommand('AT+CFUN=1', (result, err) => {
+  modem.executeCommand('AT+CFUN=1,1', (result, err) => {
     if (err) {
       console.log(`Error - ${err}`);
     } else {
