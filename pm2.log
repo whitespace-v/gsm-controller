@@ -1,23 +1,225 @@
+{"level":30,"time":1753954851954,"pid":111734,"hostname":"debian","msg":"Server listening on 7777"}
+{"level":30,"time":1753954852075,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1753954852076,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1753954856190,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1753954856191,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1753954860229,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1753954860230,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1753954864239,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"26\",\"signalStrength\":61}"}
+{"level":30,"time":1753954864240,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"28\",\"signalStrength\":57}"}
+{"level":30,"time":1753954868236,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1753954868237,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1753954868515,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1753954868515,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1753954872286,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1753954872564,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1753954885640,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
+{"level":30,"time":1753954885853,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
+{"level":30,"time":1753954886112,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
+{"level":30,"time":1753954886161,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
+{"level":30,"time":1753954894225,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+{"level":30,"time":1753954894279,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+{"level":30,"time":1753954955973,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1715"}
+{"level":30,"time":1753954955985,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753955121625,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1998"}
+{"level":30,"time":1753955121631,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753955348124,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0613"}
+{"level":30,"time":1753955348131,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753956760372,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1742"}
+{"level":30,"time":1753956760415,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":40,"time":1753956902937,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"SIM +79140772433 в данный момент занята"}
+{"level":50,"time":1753956929668,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Timeout: SMS не пришло за 60 секунд"}
+{"level":40,"time":1753956929668,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Ошибка при ожидании кода от SIM +79140772433"}
+{"level":30,"time":1753957012361,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8774"}
+{"level":30,"time":1753957012371,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753957870054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 6313"}
+{"level":30,"time":1753957870062,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753958747298,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0430"}
+{"level":30,"time":1753958747306,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753959895761,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8022"}
+{"level":30,"time":1753959895770,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753960370724,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1909"}
+{"level":30,"time":1753960370733,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1753960490459,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 4385"}
+{"level":30,"time":1753960490465,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754010724335,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 4084"}
+{"level":30,"time":1754010724343,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754015767725,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 6283"}
+{"level":30,"time":1754015767733,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+PrismaClientValidationError: 
+Invalid `prisma.smsIncomingHistory.create()` invocation in
+/home/debian/gsm-controller/modemManager/modemManager.js:113:39
+
+  110 try {
+  111   const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
+  112   const simId  = device.currentSimId;
+→ 113   await prisma.smsIncomingHistory.create({
+          data: {
+            modemDeviceId: 443,
+            simCardId: 399,
+            sender: "T-Bank",
+            receivedAt: new Date("2025-08-01T08:01:38.000Z"),
+        +   text: String
+          }
+        })
+
+Argument `text` is missing.
+    at An (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at zn.handleRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:7102)
+    at zn.handleAndLogRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6784)
+    at zn.request (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6491)
+    at async l (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:130:9778)
+    at async ModemManager._saveIncoming (/home/debian/gsm-controller/modemManager/modemManager.js:113:7)
+    at async EventEmitter.handler (/home/debian/gsm-controller/modemManager/usecases/getMessage.js:52:13) {
+  clientVersion: '6.7.0'
+}
+{"level":30,"time":1754037852054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 2103"}
+{"level":30,"time":1754037852063,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754038084229,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 3048"}
+{"level":30,"time":1754038084237,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754038375053,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0303"}
+{"level":30,"time":1754038375064,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754038542425,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 5854"}
+{"level":30,"time":1754038542433,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754038753597,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8096"}
+{"level":30,"time":1754038753605,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754039669178,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0253"}
+{"level":30,"time":1754039669185,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754039761046,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 5722"}
+{"level":30,"time":1754039761054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754040770364,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0424"}
+{"level":30,"time":1754040770372,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754040953019,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1375"}
+{"level":30,"time":1754040953027,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754041364861,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 3777"}
+{"level":30,"time":1754041364868,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+{"level":30,"time":1754042262716,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1260"}
+{"level":30,"time":1754042262723,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+PrismaClientValidationError: 
+Invalid `prisma.smsIncomingHistory.create()` invocation in
+/home/debian/gsm-controller/modemManager/modemManager.js:113:39
+
+  110 try {
+  111   const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
+  112   const simId  = device.currentSimId;
+→ 113   await prisma.smsIncomingHistory.create({
+          data: {
+            modemDeviceId: 443,
+            simCardId: 399,
+            sender: "T-Bank",
+            receivedAt: new Date("2025-08-01T10:12:08.000Z"),
+        +   text: String
+          }
+        })
+
+Argument `text` is missing.
+    at An (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:29:1363)
+    at zn.handleRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:7102)
+    at zn.handleAndLogRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6784)
+    at zn.request (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6491)
+    at async l (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:130:9778)
+    at async ModemManager._saveIncoming (/home/debian/gsm-controller/modemManager/modemManager.js:113:7)
+    at async EventEmitter.handler (/home/debian/gsm-controller/modemManager/usecases/getMessage.js:52:13) {
+  clientVersion: '6.7.0'
+}
+{"level":30,"time":1754043850719,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0176"}
+{"level":30,"time":1754043850726,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
 Получен сигнал SIGINT, ставим все SIM-карты неактивными…
 Все SIM-карты помечены как inactive.
-{"level":30,"time":1753609569832,"pid":1628090,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1753609569953,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1753609569955,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1753609574067,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1753609574069,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1753609578106,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1753609578108,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1753609582117,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"20\",\"signalStrength\":73}"}
-{"level":30,"time":1753609582117,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"25\",\"signalStrength\":63}"}
-{"level":30,"time":1753609586237,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1753609586237,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1753609586238,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1753609586239,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1753609590288,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1753609590288,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1753609603355,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1753609603546,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1753609609923,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1753609609972,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":30,"time":1753609610855,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"getBalanceByPhone","msg":"Баланс SIM +79140772433: 35.92"}
-{"level":30,"time":1753609617156,"pid":1628090,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"getBalanceByPhone","msg":"Баланс SIM +79140774084: 38.81"}
+{"level":30,"time":1754120221001,"pid":940064,"hostname":"debian","msg":"Server listening on 7777"}
+{"level":30,"time":1754120221121,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1754120221123,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1754120225232,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754120225233,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754120229271,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754120229272,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754120233280,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"24\",\"signalStrength\":65}"}
+{"level":30,"time":1754120233281,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
+{"level":30,"time":1754120237277,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754120237277,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754120237837,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754120237837,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754120241327,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754120241885,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754120254059,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754120254066,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754120254117,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
+{"level":30,"time":1754120254270,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
+{"level":30,"time":1754120261257,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+{"level":30,"time":1754120261452,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+{"level":30,"time":1754120326457,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+{"level":30,"time":1754121200704,"pid":944093,"hostname":"debian","msg":"Server listening on 7777"}
+{"level":30,"time":1754121200826,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121200828,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121204942,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121204943,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121208982,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121208983,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121212991,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
+{"level":30,"time":1754121212991,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"25\",\"signalStrength\":63}"}
+{"level":30,"time":1754121216986,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121216987,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121217111,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121217112,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121221038,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121221161,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121234131,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121234272,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121234322,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
+{"level":30,"time":1754121234332,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
+{"level":30,"time":1754121241420,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+{"level":30,"time":1754121241434,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+{"level":30,"time":1754121421753,"pid":945094,"hostname":"debian","msg":"Server listening on 7777"}
+{"level":30,"time":1754121421873,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121421875,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121425985,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121425987,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121430024,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121430025,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121434034,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"23\",\"signalStrength\":67}"}
+{"level":30,"time":1754121434035,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
+{"level":30,"time":1754121438031,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121438032,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121438136,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121438136,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121442083,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121442185,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121454942,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121454991,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
+{"level":30,"time":1754121455223,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121455415,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
+{"level":30,"time":1754121462263,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+{"level":30,"time":1754121462476,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+{"level":30,"time":1754121475338,"pid":945367,"hostname":"debian","msg":"Server listening on 7777"}
+{"level":30,"time":1754121475459,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121475461,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
+{"level":30,"time":1754121479575,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121479577,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
+{"level":30,"time":1754121483613,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121483614,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
+{"level":30,"time":1754121487624,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"25\",\"signalStrength\":63}"}
+{"level":30,"time":1754121487624,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
+{"level":30,"time":1754121491620,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121491621,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121491744,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
+{"level":30,"time":1754121491744,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
+{"level":30,"time":1754121495672,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121495793,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
+{"level":30,"time":1754121508250,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121508300,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
+{"level":30,"time":1754121509995,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
+{"level":30,"time":1754121510208,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
+{"level":40,"time":1754121514226,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"SIM +79140774084 занята"}
+{"level":30,"time":1754121515423,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+{"level":30,"time":1754121517446,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140774084: 15.45"}
+15.45
+{"level":30,"time":1754121535569,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140774084: 15.45"}
+15.45
+{"level":30,"time":1754121535591,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140772433: 12.56"}
+12.56

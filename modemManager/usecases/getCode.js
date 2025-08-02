@@ -11,6 +11,7 @@ module.exports = async function getCode(
   const modem = entry.modem
   const port = entry.port
   const imei = entry.imei
+  const operation = "Get authentification code"
 
   try {
     sim = await prisma.simCard.findFirst({
@@ -65,7 +66,8 @@ module.exports = async function getCode(
             }
 
             try {
-              await _saveIncoming(entry, { sender, dateTimeSent, code });
+              let text = `Код аутентификации: ${code}`
+              await _saveIncoming(entry, { sender, dateTimeSent, text });
             } catch (e) {
               logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
             }

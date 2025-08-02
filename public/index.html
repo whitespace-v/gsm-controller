@@ -1,0 +1,34 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GSM Admin Panel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/src/style.css" /> <!-- при необходимости -->
+  <script src="/src/main.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-white shadow-md">
+    <div class="p-4 text-xl font-bold border-b">GSM Панель</div>
+    <nav class="flex flex-col gap-1 p-4">
+      <button class="btn-tab" data-tab="balance">Баланс</button>
+      <button class="btn-tab" data-tab="code">Код (2FA)</button>
+      <button class="btn-tab" data-tab="sms">Получить SMS</button>
+      <button class="btn-tab" data-tab="history">История</button>
+      <button class="btn-tab" data-tab="send">Отправить SMS</button>
+      <button class="btn-tab" data-tab="delete">Удалить сообщения</button>
+      <button class="btn-tab" data-tab="refreshAll">Перезагрузка всех</button>
+      <button class="btn-tab" data-tab="refresh">Перезагрузка выборочно</button>
+      <button class="btn-tab" data-tab="allbalances">Балансы всех</button>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6" id="content">
+    <h1 class="text-2xl font-bold mb-4">Добро пожаловать!</h1>
+    <p>Выберите действие из меню слева.</p>
+  </main>
+</body>
+</html>

@@ -4,7 +4,7 @@ const logger = require("../../utils/logger");
 
 module.exports = async function getBalanceByPhone(_getEntry) {
   let balances = {}
-  const operation = "Get balance for all phones"; 
+  const operation = "Get balance of all sim numbers"; 
   
   let sims = await prisma.simCard.findMany({
     where: { status: "active", busy: false }

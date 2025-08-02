@@ -2,6 +2,8 @@
 const Koa = require("koa");
 const Router = require("@koa/router");
 const bodyParser = require("koa-bodyparser");
+const serve = require("koa-static");
+const path = require("path");
 const ModemManager = require("./modemManager/modemManager");
 const logger = require("./utils/logger");
 require("./utils/shutdown");
@@ -34,12 +36,13 @@ manager.addModems(options);
 const app = new Koa();
 const router = new Router();
 
-// Healthcheck
+app.use(serve(path.join(__dirname, "public")));
+
 router.get("/", (ctx) => {
-  ctx.body = { status: "ok" };
+  ctx.redirect("/index.html");
 });
 
-// Получить код: GET /code?from=+7914...
+// Получить код с конкретной симкарты (from=<номер телефона>)
 router.get("/gsm/api/whale/code", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
@@ -56,7 +59,7 @@ router.get("/gsm/api/whale/code", async (ctx) => {
   }
 });
 
-// Получить SMS: GET /sms?from=+7914...
+// Получение смс с конкретной симкарты (from=<номер телефона>)
 router.get("/gsm/api/debug/sms", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
@@ -66,14 +69,16 @@ router.get("/gsm/api/debug/sms", async (ctx) => {
   }
   try {
     const sms = await manager.getMessage(from);
-    ctx.body = { phone: from, sender: sms.sender, message: sms.message};
+    sender = sms.sender
+    sender ? sender : sender=null
+    ctx.body = { phone: from, sender: sender, message: sms.message};
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };
   }
 });
 
-// Баланс: GET /balance?from=%2B...
+// Получение баланса конкретной симкарты (from=<номер телефона>)
 router.get("/gsm/api/debug/balance", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
@@ -94,6 +99,7 @@ router.get("/gsm/api/debug/balance", async (ctx) => {
   }
 });
 
+// Получение баланса со всех симкарт
 router.get("/gsm/api/debug/allbalances", async (ctx) => {
   try {
     ctx.body = await manager.getBalanceByAllPhones();
@@ -103,6 +109,7 @@ router.get("/gsm/api/debug/allbalances", async (ctx) => {
   }
 });
 
+// Удаление сообщений со всех симкарт
 router.get("/gsm/api/debug/deletemessages", async (ctx) => {
   try {
     ctx.body = await manager.deleteMessagesFromAllPhones();
@@ -112,7 +119,7 @@ router.get("/gsm/api/debug/deletemessages", async (ctx) => {
   }
 });
 
-// Отправка SMS: POST /send
+// Отправка SMS с симкарты (опционально можно указать с какой конкретно симкарты прислать смс серез from=<номер телефона>)
 router.post("/gsm/api/2fa/send", async (ctx) => {
   const from = ctx.query.from;
   const { to, text } = ctx.request.body;
@@ -133,7 +140,7 @@ router.post("/gsm/api/2fa/send", async (ctx) => {
   }
 });
 
-// История подключений: GET /history?from=%2B...
+// История подключений конкретной симкарты (from=<номер телефона>)
 router.get("/gsm/api/debug/history", async (ctx) => {
   const from = ctx.query.from;
   if (!from) {
@@ -149,12 +156,13 @@ router.get("/gsm/api/debug/history", async (ctx) => {
   }
 });
 
-// Принудительный релоад модемов
+// Принудительная перезагрузка всех модемов
 router.post("/gsm/api/debug/refreshallmodems", (ctx) => {
   manager.addModems(options);
   ctx.body = { status: "refreshing" };
 });
 
+// Принудительная перезагрузка конкретных симкарт (например: {+79841894786, +79147274837})
 router.post("/gsm/api/debug/refreshmodems", async (ctx) => {
   const { phones } = ctx.request.body;
   if (!phones) {

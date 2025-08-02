@@ -4,7 +4,7 @@ const logger = require("../../utils/logger");
 
 module.exports = async function getBalanceByPhone(entry) {
   const { port, imei, phone, modem } = entry;             
-  const operation = "getBalanceByPhone";                   
+  const operation = "Get balance of sim number";                   
   let sim, resp;
 
   try {

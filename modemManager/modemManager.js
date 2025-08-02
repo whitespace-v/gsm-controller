@@ -106,11 +106,15 @@ class ModemManager {
   }
 
   // Сохранение входящего SMS в БД
-  async _saveIncoming(entry, { sender, dateTimeSent, message }) {
-    const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
-    const simId  = device.currentSimId;
-    await prisma.smsIncomingHistory.create({ data: { modemDeviceId: device.id, simCardId: simId, sender, receivedAt: dateTimeSent, text: message } });
-    logger.info(this.loggerFields(entry), "Сообщение сохранено");
+  async _saveIncoming(entry, { sender, dateTimeSent, text }) {
+    try {
+      const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
+      const simId  = device.currentSimId;
+      await prisma.smsIncomingHistory.create({ data: { modemDeviceId: device.id, simCardId: simId, sender, receivedAt: dateTimeSent, text } });
+      logger.info(this.loggerFields(entry), "Сообщение сохранено");
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   // Очистка всех SMS на SIM
