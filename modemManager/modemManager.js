@@ -116,7 +116,7 @@ class ModemManager {
       await prisma.smsIncomingHistory.create({ data: { modemDeviceId: device.id, simCardId: simId, sender, receivedAt: dateTimeSent, text } });
       logger.info(this.loggerFields(entry), "Сообщение сохранено");
     } catch (error) {
-      console.log(error)
+      logger.info(this.loggerFields(entry, error), "Ошибка сохранения сообщения");
     }
   }
 
@@ -155,7 +155,6 @@ class ModemManager {
       let lastLine = page * numbers
       await new Promise((resolve, reject) => {
         exec(`tac ${process.env.LOG_FILE} | sed -n '${firstLine},${lastLine}p' | tac`, (err, stdout, stderr) => {
-          console.log(stdout)
           if (err) {
             logger.error("Ошибка получения логов");
             return reject(err);

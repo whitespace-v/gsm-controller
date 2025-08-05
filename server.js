@@ -176,7 +176,6 @@ router.post("/gsm/api/debug/refreshmodems", async (ctx) => {
 });
 
 router.get("/gsm/api/logs", async (ctx) => {
-  console.log(ctx)
   const page = ctx.query.page;
   const numbers = ctx.query.numbers;
 

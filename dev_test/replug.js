@@ -13,5 +13,4 @@ exec(`sudo ${scriptPath} ${port}`, (error, stdout, stderr) => {
     console.error(`stderr: ${stderr}`);
     return;
   }
-  console.log(`stdout: ${stdout}`);
 });
