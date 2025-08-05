@@ -2,7 +2,6 @@
 const Koa = require("koa");
 const Router = require("@koa/router");
 const bodyParser = require("koa-bodyparser");
-const serve = require("koa-static");
 const path = require("path");
 const ModemManager = require("./modemManager/modemManager");
 const logger = require("./utils/logger");
@@ -36,10 +35,8 @@ manager.addModems(options);
 const app = new Koa();
 const router = new Router();
 
-app.use(serve(path.join(__dirname, "public")));
-
 router.get("/", (ctx) => {
-  ctx.redirect("/index.html");
+  ctx.body = { status: "ok" };
 });
 
 // Получить код с конкретной симкарты (from=<номер телефона>)
@@ -172,6 +169,27 @@ router.post("/gsm/api/debug/refreshmodems", async (ctx) => {
   }
   try {
     ctx.body = await manager.refreshModem(phones, options);
+  } catch (e) {
+    ctx.status = 500;
+    ctx.body = { error: e.message };
+  }
+});
+
+router.get("/gsm/api/logs", async (ctx) => {
+  console.log(ctx)
+  const page = ctx.query.page;
+  const numbers = ctx.query.numbers;
+
+  try {
+    if (!page && !numbers) {
+      ctx.body = await manager._getLogs();
+    } else if (!page && numbers) {
+      ctx.body = await manager._getLogs(1, numbers);
+    } else if (page && !numbers) {
+      ctx.body = await manager._getLogs(page, 30);
+    } else if (page && numbers) {
+      ctx.body = await manager._getLogs(page, numbers);
+    }
   } catch (e) {
     ctx.status = 500;
     ctx.body = { error: e.message };

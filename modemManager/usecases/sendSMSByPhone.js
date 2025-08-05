@@ -71,7 +71,8 @@ module.exports = async function sendSMSByPhone(
       logger.info({ port, imei, phone, operation }, `Отправлен 2FA код ${text}`);
 
       return result;                                                        
-    } catch (sendError) {
+    } catch (error) {
+      logger.error({ port, imei, phone, operation, error: {error} }, "sendSMSByPhone: необработанная ошибка");
       // 6) В случае ошибки — пишем в историю с статусом error
       const device = await prisma.modemDevice.findFirst({
         where: { currentSimId: sim.id },
@@ -91,14 +92,12 @@ module.exports = async function sendSMSByPhone(
       await prisma.simCard.update({
         where: { id: sim.id },
         data: { busy: false },                                              
-      }).catch((err) =>
-        logger.warn({ port, imei, phone, operation, error: err },
-                    `Ошибка снятия busy для SIM ${phone}`)
+      }).catch((error) =>
+        logger.warn({ port, imei, phone, operation, error: {error} }, `Ошибка снятия busy для SIM ${phone}`)
       );
     }
-  } catch (err) {
+  } catch (error) {
     // 8) Лог непредвиденных ошибок
-    logger.error({ port, imei, phone, operation, error: err },
-                 "sendSMSByPhone: необработанная ошибка");
+    logger.error({ port, imei, phone, operation, error: {error} }, "sendSMSByPhone: необработанная ошибка");
   }
 };

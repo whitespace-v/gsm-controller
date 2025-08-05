@@ -76,9 +76,9 @@ module.exports = async function sendSMS(to, text, modems, _deleteMessages) {
       logger.info({ port, imei, phone, operation }, `Отправлен 2FA код ${text}`);
 
       return result;
-    } catch (sendError) {
+    } catch (error) {
       // 8) Логирование ошибки отправки и запись в историю
-      logger.error({ port, imei, phone, operation, sendError }, "Ошибка отправки SMS");
+      logger.error({ port, imei, phone, operation, error: {error} }, "Ошибка отправки SMS");
       await prisma.smsOutgoingHistory.create({
         data: {
           simCardId:     sim.id,
@@ -90,15 +90,15 @@ module.exports = async function sendSMS(to, text, modems, _deleteMessages) {
       });
     } finally {
       // 9) Всегда: очистить входящие и снять флаг busy
-      await _deleteMessages(entry).catch(err =>
-        logger.warn({ port, imei, phone, err, operation }, "Ошибка очистки SMS")
+      await _deleteMessages(entry).catch(error =>
+        logger.warn({ port, imei, phone, error: {error}, operation }, "Ошибка очистки SMS")
       );
       await prisma.simCard.update({ where: { id: sim.id }, data: { busy: false } })
-        .catch(err => logger.warn({ port, imei, phone, err, operation }, "Ошибка снятия busy"));
+        .catch(err => logger.warn({ port, imei, phone, error: {error}, operation }, "Ошибка снятия busy"));
     }
 
   } catch (error) {
     // 10) Обработка непредвиденных ошибок
-    logger.error({ operation, error }, "sendSMS: необработанная ошибка");
+    logger.error({ operation, error: {error} }, "sendSMS: необработанная ошибка");
   }
 };

@@ -1,225 +1,1557 @@
-{"level":30,"time":1753954851954,"pid":111734,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1753954852075,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1753954852076,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1753954856190,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1753954856191,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1753954860229,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1753954860230,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1753954864239,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"26\",\"signalStrength\":61}"}
-{"level":30,"time":1753954864240,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"28\",\"signalStrength\":57}"}
-{"level":30,"time":1753954868236,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1753954868237,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1753954868515,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1753954868515,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1753954872286,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1753954872564,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1753954885640,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1753954885853,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":30,"time":1753954886112,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1753954886161,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1753954894225,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
-{"level":30,"time":1753954894279,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
-{"level":30,"time":1753954955973,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1715"}
-{"level":30,"time":1753954955985,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753955121625,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1998"}
-{"level":30,"time":1753955121631,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753955348124,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0613"}
-{"level":30,"time":1753955348131,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753956760372,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1742"}
-{"level":30,"time":1753956760415,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":40,"time":1753956902937,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"SIM +79140772433 в данный момент занята"}
-{"level":50,"time":1753956929668,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Timeout: SMS не пришло за 60 секунд"}
-{"level":40,"time":1753956929668,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Ошибка при ожидании кода от SIM +79140772433"}
-{"level":30,"time":1753957012361,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8774"}
-{"level":30,"time":1753957012371,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753957870054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 6313"}
-{"level":30,"time":1753957870062,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753958747298,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0430"}
-{"level":30,"time":1753958747306,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753959895761,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8022"}
-{"level":30,"time":1753959895770,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753960370724,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1909"}
-{"level":30,"time":1753960370733,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1753960490459,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 4385"}
-{"level":30,"time":1753960490465,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754010724335,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 4084"}
-{"level":30,"time":1754010724343,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754015767725,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 6283"}
-{"level":30,"time":1754015767733,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-PrismaClientValidationError: 
-Invalid `prisma.smsIncomingHistory.create()` invocation in
-/home/debian/gsm-controller/modemManager/modemManager.js:113:39
+[01:43:08.861] [32mINFO[39m (1637344): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:43:08.861] [32mINFO[39m (1637344): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:43:09.008] [32mINFO[39m (1637344): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:43:09.009] [32mINFO[39m (1637344): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:43:12.911] [32mINFO[39m (1637344): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:43:13.059] [32mINFO[39m (1637344): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:43:25.039] [32mINFO[39m (1637344): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:43:25.232] [32mINFO[39m (1637344): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:43:26.712] [32mINFO[39m (1637344): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:43:26.762] [32mINFO[39m (1637344): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:43:32.430] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[01:43:33.939] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[02:14:43.294] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:14:43.354] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:17:38.814] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:17:38.818] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:20:38.156] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:20:38.215] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:30:04.284] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:30:04.505] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:35:33.097] [32mINFO[39m (1637344): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:35:33.204] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[07:39:47.105] [32mINFO[39m (1637344): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[07:40:43.690] [31mERROR[39m (1637344): [36mTimeout: SMS не пришло за 60 секунд[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[07:40:43.691] [33mWARN[39m (1637344): [36mОшибка при ожидании сообщения от SIM +79140772433[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    error: {}
+[07:40:43.692] [31mERROR[39m (1637344): [36mНеобработанная ошибка при получении сообщения[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    error: {
+      "error": {}
+    }
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:37:17.687] [32mINFO[39m (1983083): [36mServer listening on 7777[39m
+[01:37:17.808] [32mINFO[39m (1983083): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:37:17.811] [32mINFO[39m (1983083): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[01:37:21.918] [32mINFO[39m (1983083): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:21.920] [32mINFO[39m (1983083): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:25.955] [32mINFO[39m (1983083): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:25.956] [32mINFO[39m (1983083): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:29.964] [32mINFO[39m (1983083): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:29.965] [32mINFO[39m (1983083): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:33.961] [32mINFO[39m (1983083): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:33.962] [32mINFO[39m (1983083): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:34.128] [32mINFO[39m (1983083): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:37:34.129] [32mINFO[39m (1983083): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
 
-  110 try {
-  111   const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
-  112   const simId  = device.currentSimId;
-→ 113   await prisma.smsIncomingHistory.create({
-          data: {
-            modemDeviceId: 443,
-            simCardId: 399,
-            sender: "T-Bank",
-            receivedAt: new Date("2025-08-01T08:01:38.000Z"),
-        +   text: String
-          }
-        })
+  TypeError: Cannot destructure property 'page' of 'ctx.query.from' as it is undefined.
+      at /home/debian/gsm-controller/server.js:179:10
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at /home/debian/gsm-controller/node_modules/@koa/router/lib/router.js:261:18
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at /home/debian/gsm-controller/node_modules/koa-compose/index.js:34:12
+      at dispatch (/home/debian/gsm-controller/node_modules/@koa/router/lib/router.js:266:33)
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at bodyParser (/home/debian/gsm-controller/node_modules/koa-bodyparser/index.js:78:11)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
 
-Argument `text` is missing.
-    at An (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:29:1363)
-    at zn.handleRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:7102)
-    at zn.handleAndLogRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6784)
-    at zn.request (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6491)
-    at async l (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:130:9778)
-    at async ModemManager._saveIncoming (/home/debian/gsm-controller/modemManager/modemManager.js:113:7)
-    at async EventEmitter.handler (/home/debian/gsm-controller/modemManager/usecases/getMessage.js:52:13) {
-  clientVersion: '6.7.0'
+[01:37:38.012] [32mINFO[39m (1983083): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:37:38.178] [32mINFO[39m (1983083): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:37:49.737] [32mINFO[39m (1983083): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:37:49.949] [32mINFO[39m (1983083): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:37:58.429] [32mINFO[39m (1983083): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:37:58.479] [32mINFO[39m (1983083): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:37:59.253] [32mINFO[39m (1983083): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[01:38:05.977] [32mINFO[39m (1983083): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:38:37.653] [32mINFO[39m (1983560): [36mServer listening on 7777[39m
+[01:38:37.776] [32mINFO[39m (1983560): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:38:37.778] [32mINFO[39m (1983560): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+
+  TypeError: Cannot destructure property 'page' of 'ctx.query.body' as it is undefined.
+      at /home/debian/gsm-controller/server.js:179:10
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at /home/debian/gsm-controller/node_modules/@koa/router/lib/router.js:261:18
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at /home/debian/gsm-controller/node_modules/koa-compose/index.js:34:12
+      at dispatch (/home/debian/gsm-controller/node_modules/@koa/router/lib/router.js:266:33)
+      at dispatch (/home/debian/gsm-controller/node_modules/koa-compose/index.js:42:32)
+      at bodyParser (/home/debian/gsm-controller/node_modules/koa-bodyparser/index.js:78:11)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+[01:38:41.884] [32mINFO[39m (1983560): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:41.886] [32mINFO[39m (1983560): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:45.923] [32mINFO[39m (1983560): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:45.925] [32mINFO[39m (1983560): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:49.932] [32mINFO[39m (1983560): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:49.933] [32mINFO[39m (1983560): [36mSignal Strength: {"signalQuality":"25","signalStrength":63}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:53.930] [32mINFO[39m (1983560): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:53.930] [32mINFO[39m (1983560): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:54.034] [32mINFO[39m (1983560): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:54.035] [32mINFO[39m (1983560): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:38:57.981] [32mINFO[39m (1983560): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:38:58.083] [32mINFO[39m (1983560): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:39:11.565] [32mINFO[39m (1983560): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:39:11.757] [32mINFO[39m (1983560): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:39:12.833] [32mINFO[39m (1983560): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:39:12.882] [32mINFO[39m (1983560): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:39:18.886] [32mINFO[39m (1983560): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[01:39:20.048] [32mINFO[39m (1983560): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:42:24.484] [32mINFO[39m (1984711): [36mServer listening on 7777[39m
+[01:42:24.606] [32mINFO[39m (1984711): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:42:24.608] [32mINFO[39m (1984711): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[01:42:28.094] [31mERROR[39m (1984711):
+    error: {}
+[01:42:28.717] [32mINFO[39m (1984711): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:28.720] [32mINFO[39m (1984711): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:32.757] [32mINFO[39m (1984711): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:32.758] [32mINFO[39m (1984711): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:36.765] [32mINFO[39m (1984711): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:36.767] [32mINFO[39m (1984711): [36mSignal Strength: {"signalQuality":"26","signalStrength":61}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:40.763] [32mINFO[39m (1984711): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:40.764] [32mINFO[39m (1984711): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:40.866] [32mINFO[39m (1984711): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:40.866] [32mINFO[39m (1984711): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:42:44.814] [32mINFO[39m (1984711): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:42:44.914] [32mINFO[39m (1984711): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:42:58.167] [32mINFO[39m (1984711): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:42:58.217] [32mINFO[39m (1984711): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:43:00.910] [32mINFO[39m (1984711): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:43:01.102] [32mINFO[39m (1984711): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:43:05.382] [32mINFO[39m (1984711): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[01:43:08.290] [32mINFO[39m (1984711): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[01:44:03.443] [31mERROR[39m (1984711):
+    error: {}
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:47:13.391] [32mINFO[39m (1986135): [36mServer listening on 7777[39m
+[01:47:13.512] [32mINFO[39m (1986135): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:47:13.515] [32mINFO[39m (1986135): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[01:47:16.777] [31mERROR[39m (1986135):
+    error: {}
+[01:47:17.623] [32mINFO[39m (1986135): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:17.626] [32mINFO[39m (1986135): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:21.661] [32mINFO[39m (1986135): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:21.662] [32mINFO[39m (1986135): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:25.672] [32mINFO[39m (1986135): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:25.674] [32mINFO[39m (1986135): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:29.669] [32mINFO[39m (1986135): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:29.670] [32mINFO[39m (1986135): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:29.794] [32mINFO[39m (1986135): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:29.795] [32mINFO[39m (1986135): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:47:33.720] [32mINFO[39m (1986135): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:47:33.843] [32mINFO[39m (1986135): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:47:47.441] [32mINFO[39m (1986135): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:47:47.490] [32mINFO[39m (1986135): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:47:48.095] [32mINFO[39m (1986135): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:47:48.306] [32mINFO[39m (1986135): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:47:54.826] [32mINFO[39m (1986135): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[01:47:55.474] [32mINFO[39m (1986135): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:51:33.832] [32mINFO[39m (1987542): [36mServer listening on 7777[39m
+[01:51:33.957] [32mINFO[39m (1987542): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:51:33.959] [32mINFO[39m (1987542): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[01:51:37.249] [31mERROR[39m (1987542):
+    error: {}
+[01:51:38.068] [32mINFO[39m (1987542): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:38.071] [32mINFO[39m (1987542): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:42.108] [32mINFO[39m (1987542): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:42.109] [32mINFO[39m (1987542): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:46.117] [32mINFO[39m (1987542): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:46.119] [32mINFO[39m (1987542): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:50.114] [32mINFO[39m (1987542): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:50.115] [32mINFO[39m (1987542): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:50.260] [32mINFO[39m (1987542): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:50.261] [32mINFO[39m (1987542): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:51:54.164] [32mINFO[39m (1987542): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:51:54.310] [32mINFO[39m (1987542): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:52:08.220] [32mINFO[39m (1987542): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:52:08.269] [32mINFO[39m (1987542): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:52:08.882] [32mINFO[39m (1987542): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:52:09.073] [32mINFO[39m (1987542): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:52:15.702] [32mINFO[39m (1987542): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[01:52:16.584] [32mINFO[39m (1987542): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[01:53:33.196] [32mINFO[39m (1988198): [36mServer listening on 7777[39m
+[01:53:33.317] [32mINFO[39m (1988198): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:53:33.319] [32mINFO[39m (1988198): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+
+[01:53:37.069] [33mWARN[39m (1988198):
+    [35mstderr[39m: "tac: failed to open '/root/gsm-controller/logs/app.log' for reading: No such file or directory\n"
+[01:53:37.070] [32mINFO[39m (1988198): [36mЛоги получены[39m
+[01:53:37.429] [32mINFO[39m (1988198): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:37.431] [32mINFO[39m (1988198): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:41.468] [32mINFO[39m (1988198): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:41.468] [32mINFO[39m (1988198): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:45.479] [32mINFO[39m (1988198): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:45.480] [32mINFO[39m (1988198): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:49.474] [32mINFO[39m (1988198): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:49.475] [32mINFO[39m (1988198): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:49.600] [32mINFO[39m (1988198): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:49.600] [32mINFO[39m (1988198): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:53:53.524] [32mINFO[39m (1988198): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:53:53.648] [32mINFO[39m (1988198): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[01:54:05.596] [32mINFO[39m (1988198): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:54:05.808] [32mINFO[39m (1988198): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[01:54:06.396] [32mINFO[39m (1988198): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:54:06.446] [32mINFO[39m (1988198): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[01:54:13.135] [32mINFO[39m (1988198): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[01:54:13.864] [32mINFO[39m (1988198): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+[01:59:32.461] [32mINFO[39m (1990035): [36mServer listening on 7777[39m
+[01:59:32.585] [32mINFO[39m (1990035): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[01:59:32.587] [32mINFO[39m (1990035): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[01:59:32.461] INFO (1990035): Server listening on 7777
+[01:59:32.585] INFO (1990035): Найден GSM-модем
+    port: "/dev/ttyUSB1"
+[01:59:32.587] INFO (1990035): Найден GSM-модем
+    port: "/dev/ttyUSB0"
+
+[01:59:35.782] [32mINFO[39m (1990035): [36mЛоги получены[39m
+[01:59:36.696] [32mINFO[39m (1990035): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:36.699] [32mINFO[39m (1990035): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:40.736] [32mINFO[39m (1990035): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:40.737] [32mINFO[39m (1990035): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:44.746] [32mINFO[39m (1990035): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:44.747] [32mINFO[39m (1990035): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:48.743] [32mINFO[39m (1990035): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:48.744] [32mINFO[39m (1990035): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:48.848] [32mINFO[39m (1990035): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[01:59:48.849] [32mINFO[39m (1990035): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+    imei: null
+    phone: null
+[01:59:40.737] INFO (1990035): Включен PDU режим
+    port: "/dev/ttyUSB0"
+    imei: null
+    phone: null
+[01:59:44.746] INFO (1990035): Signal Strength: {"signalQuality":"24","signalStrength":65}
+    port: "/dev/ttyUSB1"
+    imei: null
+    phone: null
+[01:59:44.747] INFO (1990035): Signal Strength: {"signalQuality":"22","signalStrength":69}
+    port: "/dev/ttyUSB0"
+    imei: null
+    phone: null
+[01:59:48.743] INFO (1990035): Сообщения успешно удалены
+    port: "/dev/ttyUSB1"
+    imei: null
+    phone: null
+[01:59:48.744] INFO (1990035): Модем открыт впервые, сброшены счётчики
+    port: "/dev/ttyUSB1"
+    imei: null
+    phone: null
+[01:59:48.848] INFO (1990035): Сообщения успешно удалены
+    port: "/dev/ttyUSB0"
+    imei: null
+    phone: null
+[01:59:48.849] INFO (1990035): Модем открыт впервые, сброшены счётчики
+    port: "/dev/ttyUSB0"
+    imei: null
+    phone: null
+
+[01:59:52.311] [32mINFO[39m (1990035): [36mЛоги получены[39m
+[01:59:52.795] [32mINFO[39m (1990035): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[01:59:52.898] [32mINFO[39m (1990035): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[02:00:04.910] [32mINFO[39m (1990035): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:00:05.104] [32mINFO[39m (1990035): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:00:12.309] [32mINFO[39m (1990035): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[02:00:12.650] [32mINFO[39m (1990035): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:00:12.700] [32mINFO[39m (1990035): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:00:19.553] [32mINFO[39m (1990035): [36mБаланс SIM +79140772433: Ошибка 100.[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[02:00:19.571] [31mERROR[39m (1990035): [36mНеожиданная ошибка Get balance by phone[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+    error: {
+      "error": {
+        "name": "PrismaClientValidationError",
+        "clientVersion": "6.7.0"
+      }
+    }
+[02:01:02.425] [32mINFO[39m (1990035): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of all sim numbers"
+[02:01:09.652] [32mINFO[39m (1990035): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of all sim numbers"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 version env with Radar: https://dotenvx.com/radar
+[02:03:50.611] [32mINFO[39m (1991253): [36mServer listening on 7777[39m
+[02:03:50.733] [32mINFO[39m (1991253): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:03:50.735] [32mINFO[39m (1991253): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+{EEEEEEEEEEEEEEEEEQ
+[02:03:54.842] [32mINFO[39m (1991253): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:03:54.843] [32mINFO[39m (1991253): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:03:58.879] [32mINFO[39m (1991253): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:03:58.881] [32mINFO[39m (1991253): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:02.889] [32mINFO[39m (1991253): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:02.890] [32mINFO[39m (1991253): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:06.885] [32mINFO[39m (1991253): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:06.886] [32mINFO[39m (1991253): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:07.084] [32mINFO[39m (1991253): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:07.085] [32mINFO[39m (1991253): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:04:10.937] [32mINFO[39m (1991253): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:04:11.134] [32mINFO[39m (1991253): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+{EEEEEEEEEEEEEEEEEQ
+[02:04:22.857] [32mINFO[39m (1991253): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:04:23.049] [32mINFO[39m (1991253): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:04:23.574] [32mINFO[39m (1991253): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:04:23.623] [32mINFO[39m (1991253): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:04:31.698] [32mINFO[39m (1991253): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[02:04:39.271] [32mINFO[39m (1991253): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+Получен сигнал SIGINT, ставим все SIM-карты неактивными…
+Все SIM-карты помечены как inactive.
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[02:04:56.726] [32mINFO[39m (1991642): [36mServer listening on 7777[39m
+[02:04:56.847] [32mINFO[39m (1991642): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:04:56.850] [32mINFO[39m (1991642): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?numbers=5',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '4e5b4e97-cf39-4ee0-808c-55c509654dcf',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?numbers=5',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
 }
-{"level":30,"time":1754037852054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 2103"}
-{"level":30,"time":1754037852063,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754038084229,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 3048"}
-{"level":30,"time":1754038084237,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754038375053,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0303"}
-{"level":30,"time":1754038375064,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754038542425,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 5854"}
-{"level":30,"time":1754038542433,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754038753597,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 8096"}
-{"level":30,"time":1754038753605,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754039669178,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0253"}
-{"level":30,"time":1754039669185,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754039761046,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 5722"}
-{"level":30,"time":1754039761054,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754040770364,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0424"}
-{"level":30,"time":1754040770372,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754040953019,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1375"}
-{"level":30,"time":1754040953027,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754041364861,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 3777"}
-{"level":30,"time":1754041364868,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-{"level":30,"time":1754042262716,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 1260"}
-{"level":30,"time":1754042262723,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
-PrismaClientValidationError: 
-Invalid `prisma.smsIncomingHistory.create()` invocation in
-/home/debian/gsm-controller/modemManager/modemManager.js:113:39
-
-  110 try {
-  111   const device = await prisma.modemDevice.findUnique({ where: { imei: entry.imei } });
-  112   const simId  = device.currentSimId;
-→ 113   await prisma.smsIncomingHistory.create({
-          data: {
-            modemDeviceId: 443,
-            simCardId: 399,
-            sender: "T-Bank",
-            receivedAt: new Date("2025-08-01T10:12:08.000Z"),
-        +   text: String
-          }
-        })
-
-Argument `text` is missing.
-    at An (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:29:1363)
-    at zn.handleRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:7102)
-    at zn.handleAndLogRequestError (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6784)
-    at zn.request (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:121:6491)
-    at async l (/home/debian/gsm-controller/node_modules/@prisma/client/runtime/library.js:130:9778)
-    at async ModemManager._saveIncoming (/home/debian/gsm-controller/modemManager/modemManager.js:113:7)
-    at async EventEmitter.handler (/home/debian/gsm-controller/modemManager/usecases/getMessage.js:52:13) {
-  clientVersion: '6.7.0'
+[02:05:00.955] [32mINFO[39m (1991642): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:00.957] [32mINFO[39m (1991642): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:04.993] [32mINFO[39m (1991642): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:04.996] [32mINFO[39m (1991642): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:09.003] [32mINFO[39m (1991642): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:09.004] [32mINFO[39m (1991642): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:12.999] [32mINFO[39m (1991642): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:13.000] [32mINFO[39m (1991642): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:13.199] [32mINFO[39m (1991642): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:13.199] [32mINFO[39m (1991642): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:05:17.050] [32mINFO[39m (1991642): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:05:17.248] [32mINFO[39m (1991642): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?numbers=5',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '5b38a9a1-7233-417c-a9da-3ee4a39f1141',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?numbers=5',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
 }
-{"level":30,"time":1754043850719,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get authentification code","msg":"Код для входа в ЛК T-Bank: 0176"}
-{"level":30,"time":1754043850726,"pid":111734,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Сообщение сохранено"}
+[02:05:29.686] [32mINFO[39m (1991642): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:05:29.898] [32mINFO[39m (1991642): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:05:32.231] [32mINFO[39m (1991642): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:05:32.280] [32mINFO[39m (1991642): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:05:39.455] [32mINFO[39m (1991642): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[02:05:46.947] [32mINFO[39m (1991642): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
 Получен сигнал SIGINT, ставим все SIM-карты неактивными…
 Все SIM-карты помечены как inactive.
-{"level":30,"time":1754120221001,"pid":940064,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1754120221121,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1754120221123,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1754120225232,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754120225233,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754120229271,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754120229272,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754120233280,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"24\",\"signalStrength\":65}"}
-{"level":30,"time":1754120233281,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
-{"level":30,"time":1754120237277,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754120237277,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754120237837,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754120237837,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754120241327,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754120241885,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754120254059,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754120254066,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754120254117,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1754120254270,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":30,"time":1754120261257,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
-{"level":30,"time":1754120261452,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
-{"level":30,"time":1754120326457,"pid":940064,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[02:10:16.516] [32mINFO[39m (1993080): [36mServer listening on 7777[39m
+[02:10:16.637] [32mINFO[39m (1993080): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:10:16.639] [32mINFO[39m (1993080): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+[02:10:20.748] [32mINFO[39m (1993080): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:20.750] [32mINFO[39m (1993080): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:24.786] [32mINFO[39m (1993080): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:24.788] [32mINFO[39m (1993080): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:28.796] [32mINFO[39m (1993080): [36mSignal Strength: {"signalQuality":"28","signalStrength":57}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:28.797] [32mINFO[39m (1993080): [36mSignal Strength: {"signalQuality":"26","signalStrength":61}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:32.793] [32mINFO[39m (1993080): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:32.793] [32mINFO[39m (1993080): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:32.917] [32mINFO[39m (1993080): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:32.918] [32mINFO[39m (1993080): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:10:36.843] [32mINFO[39m (1993080): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:10:36.967] [32mINFO[39m (1993080): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[02:10:49.308] [32mINFO[39m (1993080): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:10:49.358] [32mINFO[39m (1993080): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:10:51.102] [32mINFO[39m (1993080): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:10:51.314] [32mINFO[39m (1993080): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?numbers=5&page=1',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '1d248970-9241-40d7-9d47-6b0b9f23e0ae',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?numbers=5&page=1',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+    phone: "+79140774084"
+[02:10:51.314] INFO (1993080): Вендор: MTS
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+
+[02:10:51.415] [32mINFO[39m (1993080): [36mЛоги получены[39m
+[02:10:56.528] [32mINFO[39m (1993080): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[02:10:58.572] [32mINFO[39m (1993080): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?page=1',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': 'd963cece-e85b-4cf1-9384-2aa29b853d13',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?page=1',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
 Получен сигнал SIGINT, ставим все SIM-карты неактивными…
 Все SIM-карты помечены как inactive.
-{"level":30,"time":1754121200704,"pid":944093,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1754121200826,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121200828,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121204942,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121204943,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121208982,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121208983,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121212991,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
-{"level":30,"time":1754121212991,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"25\",\"signalStrength\":63}"}
-{"level":30,"time":1754121216986,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121216987,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121217111,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121217112,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121221038,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121221161,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121234131,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121234272,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121234322,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1754121234332,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":30,"time":1754121241420,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
-{"level":30,"time":1754121241434,"pid":944093,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 📡 observe env with Radar: https://dotenvx.com/radar
+[02:12:26.579] [32mINFO[39m (1993714): [36mServer listening on 7777[39m
+[02:12:26.701] [32mINFO[39m (1993714): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:12:26.703] [32mINFO[39m (1993714): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?page=1',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '643f43ba-0ea1-414f-82d3-5ee9218d0855',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?page=1',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+[02:12:30.812] [32mINFO[39m (1993714): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:30.815] [32mINFO[39m (1993714): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:34.850] [32mINFO[39m (1993714): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:34.852] [32mINFO[39m (1993714): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:38.861] [32mINFO[39m (1993714): [36mSignal Strength: {"signalQuality":"29","signalStrength":55}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:38.862] [32mINFO[39m (1993714): [36mSignal Strength: {"signalQuality":"27","signalStrength":59}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:42.857] [32mINFO[39m (1993714): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:42.857] [32mINFO[39m (1993714): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:42.961] [32mINFO[39m (1993714): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:42.962] [32mINFO[39m (1993714): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:12:46.908] [32mINFO[39m (1993714): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:12:47.010] [32mINFO[39m (1993714): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[02:12:59.697] [32mINFO[39m (1993714): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:12:59.889] [32mINFO[39m (1993714): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:13:07.146] [32mINFO[39m (1993714): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[02:13:07.337] [32mINFO[39m (1993714): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:13:07.387] [32mINFO[39m (1993714): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:13:14.626] [32mINFO[39m (1993714): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
 Получен сигнал SIGINT, ставим все SIM-карты неактивными…
 Все SIM-карты помечены как inactive.
-{"level":30,"time":1754121421753,"pid":945094,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1754121421873,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121421875,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121425985,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121425987,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121430024,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121430025,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121434034,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"23\",\"signalStrength\":67}"}
-{"level":30,"time":1754121434035,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
-{"level":30,"time":1754121438031,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121438032,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121438136,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121438136,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121442083,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121442185,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121454942,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121454991,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1754121455223,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121455415,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":30,"time":1754121462263,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
-{"level":30,"time":1754121462476,"pid":945094,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"Баланс SIM +79140774084: 15.45"}
+[dotenv@17.2.1] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[02:14:11.108] [32mINFO[39m (1994247): [36mServer listening on 7777[39m
+[02:14:11.229] [32mINFO[39m (1994247): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:14:11.231] [32mINFO[39m (1994247): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?page=1',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': 'cc293720-c022-4b53-8068-946b382725cf',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?page=1',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+[02:12:59.889] INFO (1993714): Вендор: MTS
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+[02:13:07.146] INFO (1993714): Баланс SIM +79140774084: 9.65
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+    operation: "Get balance of sim number"
+[02:13:07.337] INFO (1993714): Прочитан номер SIM
+    port: "/dev/ttyUSB0"
+    imei: "867157040581811"
+    phone: "+79140772433"
+[02:13:07.387] INFO (1993714): Вендор: MTS
+    port: "/dev/ttyUSB0"
+    imei: "867157040581811"
+    phone: "+79140772433"
+[02:13:14.626] INFO (1993714): Баланс SIM +79140772433: 9.66
+    port: "/dev/ttyUSB0"
+    imei: "867157040581811"
+    phone: "+79140772433"
+    operation: "Get balance of sim number"
+[02:14:11.108] INFO (1994247): Server listening on 7777
+[02:14:11.229] INFO (1994247): Найден GSM-модем
+    port: "/dev/ttyUSB1"
+[02:14:11.231] INFO (1994247): Найден GSM-модем
+    port: "/dev/ttyUSB0"
+
+[02:14:14.497] [32mINFO[39m (1994247): [36mЛоги получены[39m
+[02:14:15.341] [32mINFO[39m (1994247): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:15.343] [32mINFO[39m (1994247): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:19.381] [32mINFO[39m (1994247): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:19.382] [32mINFO[39m (1994247): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:23.390] [32mINFO[39m (1994247): [36mSignal Strength: {"signalQuality":"24","signalStrength":65}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:23.392] [32mINFO[39m (1994247): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:27.386] [32mINFO[39m (1994247): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:27.387] [32mINFO[39m (1994247): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:27.510] [32mINFO[39m (1994247): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:27.511] [32mINFO[39m (1994247): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:14:31.436] [32mINFO[39m (1994247): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:14:31.559] [32mINFO[39m (1994247): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?numbers=5',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '4be7a24f-0681-4fa7-bf42-b78e3772cf39',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?numbers=5',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+    imei: "867157041958497"
+    phone: "+79140774084"
+[02:10:51.314] INFO (1993080): Вендор: MTS
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+[02:10:51.415] INFO (1993080): Логи получены
+[02:10:56.528] INFO (1993080): Баланс SIM +79140772433: 9.66
+    port: "/dev/ttyUSB0"
+    imei: "867157040581811"
+    phone: "+79140772433"
+    operation: "Get balance of sim number"
+[02:10:58.572] INFO (1993080): Баланс SIM +79140774084: 9.65
+    port: "/dev/ttyUSB1"
+    imei: "867157041958497"
+    phone: "+79140774084"
+    operation: "Get balance of sim number"
+[02:12:26.579] INFO (1993714): Server listening on 7777
+[02:12:26.701] INFO (1993714): Найден GSM-модем
+    port: "/dev/ttyUSB1"
+[02:12:26.703] INFO (1993714): Найден GSM-модем
+    port: "/dev/ttyUSB0"
+[02:12:30.812] INFO (1993714): Модем инициализирован
+    port: "/dev/ttyUSB0"
+    imei: null
+    phone: null
+[02:12:30.815] INFO (1993714): Модем инициализирован
+    port: "/dev/ttyUSB1"
+    imei: null
+    phone: null
+
+[02:14:34.050] [32mINFO[39m (1994247): [36mЛоги получены[39m
+[02:14:44.985] [32mINFO[39m (1994247): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:14:45.177] [32mINFO[39m (1994247): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:14:47.232] [32mINFO[39m (1994247): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:14:47.280] [32mINFO[39m (1994247): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:14:53.538] [32mINFO[39m (1994247): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"
+[02:14:54.428] [32mINFO[39m (1994247): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
 Получен сигнал SIGINT, ставим все SIM-карты неактивными…
 Все SIM-карты помечены как inactive.
-{"level":30,"time":1754121475338,"pid":945367,"hostname":"debian","msg":"Server listening on 7777"}
-{"level":30,"time":1754121475459,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121475461,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","msg":"Найден GSM-модем"}
-{"level":30,"time":1754121479575,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121479577,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем инициализирован"}
-{"level":30,"time":1754121483613,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121483614,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Включен PDU режим"}
-{"level":30,"time":1754121487624,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"25\",\"signalStrength\":63}"}
-{"level":30,"time":1754121487624,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Signal Strength: {\"signalQuality\":\"22\",\"signalStrength\":69}"}
-{"level":30,"time":1754121491620,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121491621,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121491744,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Сообщения успешно удалены"}
-{"level":30,"time":1754121491744,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":null,"phone":null,"msg":"Модем открыт впервые, сброшены счётчики"}
-{"level":30,"time":1754121495672,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121495793,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":null,"msg":"Прочитан IMEI"}
-{"level":30,"time":1754121508250,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121508300,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","msg":"Вендор: MTS"}
-{"level":30,"time":1754121509995,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Прочитан номер SIM"}
-{"level":30,"time":1754121510208,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","msg":"Вендор: MTS"}
-{"level":40,"time":1754121514226,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of sim number","msg":"SIM +79140774084 занята"}
-{"level":30,"time":1754121515423,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of sim number","msg":"Баланс SIM +79140772433: 12.56"}
-{"level":30,"time":1754121517446,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140774084: 15.45"}
-15.45
-{"level":30,"time":1754121535569,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB1","imei":"867157041958497","phone":"+79140774084","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140774084: 15.45"}
-15.45
-{"level":30,"time":1754121535591,"pid":945367,"hostname":"debian","port":"/dev/ttyUSB0","imei":"867157040581811","phone":"+79140772433","operation":"Get balance of all sim numbers","msg":"Баланс SIM +79140772433: 12.56"}
-12.56
+[dotenv@17.2.1] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[02:16:57.504] [32mINFO[39m (1995112): [36mServer listening on 7777[39m
+[02:16:57.630] [32mINFO[39m (1995112): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB1"
+[02:16:57.633] [32mINFO[39m (1995112): [36mНайден GSM-модем[39m
+    [35mport[39m: "/dev/ttyUSB0"
+{
+  request: {
+    method: 'GET',
+    url: '/gsm/api/logs?numbers=5',
+    header: {
+      'user-agent': 'PostmanRuntime/7.43.4',
+      accept: '*/*',
+      'cache-control': 'no-cache',
+      'postman-token': '94da6c1a-f1d2-46ec-af39-8c2767beba3e',
+      host: 'gsm.whalepay.ru:7777',
+      'accept-encoding': 'gzip, deflate, br',
+      connection: 'keep-alive'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/gsm/api/logs?numbers=5',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+[02:16:57.504] INFO (1995112): Server listening on 7777
+[02:16:57.630] INFO (1995112): Найден GSM-модем
+    port: "/dev/ttyUSB1"
+[02:16:57.633] INFO (1995112): Найден GSM-модем
+    port: "/dev/ttyUSB0"
+
+[02:17:00.846] [32mINFO[39m (1995112): [36mЛоги получены[39m
+[02:17:01.742] [32mINFO[39m (1995112): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:01.744] [32mINFO[39m (1995112): [36mМодем инициализирован[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:05.780] [32mINFO[39m (1995112): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:05.781] [32mINFO[39m (1995112): [36mВключен PDU режим[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:09.789] [32mINFO[39m (1995112): [36mSignal Strength: {"signalQuality":"22","signalStrength":69}[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:09.790] [32mINFO[39m (1995112): [36mSignal Strength: {"signalQuality":"26","signalStrength":61}[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:13.787] [32mINFO[39m (1995112): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:13.788] [32mINFO[39m (1995112): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:13.892] [32mINFO[39m (1995112): [36mСообщения успешно удалены[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:13.893] [32mINFO[39m (1995112): [36mМодем открыт впервые, сброшены счётчики[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: null
+    [35mphone[39m: null
+[02:17:17.837] [32mINFO[39m (1995112): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: null
+[02:17:17.942] [32mINFO[39m (1995112): [36mПрочитан IMEI[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: null
+[02:17:30.102] [32mINFO[39m (1995112): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:17:30.151] [32mINFO[39m (1995112): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+[02:17:30.416] [32mINFO[39m (1995112): [36mПрочитан номер SIM[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:17:30.629] [32mINFO[39m (1995112): [36mВендор: MTS[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+[02:17:37.640] [32mINFO[39m (1995112): [36mБаланс SIM +79140772433: 9.66[39m
+    [35mport[39m: "/dev/ttyUSB0"
+    [35mimei[39m: "867157040581811"
+    [35mphone[39m: "+79140772433"
+    [35moperation[39m: "Get balance of sim number"
+[02:17:37.654] [32mINFO[39m (1995112): [36mБаланс SIM +79140774084: 9.65[39m
+    [35mport[39m: "/dev/ttyUSB1"
+    [35mimei[39m: "867157041958497"
+    [35mphone[39m: "+79140774084"
+    [35moperation[39m: "Get balance of sim number"

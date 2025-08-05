@@ -59,7 +59,6 @@ module.exports = async function getBalanceByPhone(_getEntry) {
       });
   
       balances[sim.phoneNumber] = current_balance;
-      console.log(balances[sim.phoneNumber])
   
     } catch (error) {
       await prisma.simCard.update({
@@ -72,7 +71,7 @@ module.exports = async function getBalanceByPhone(_getEntry) {
       if (resp?.data?.follow === "terminated by network") {
         logger.error({ port, imei, phone, operation }, "USSD прерывается сетью повторно");
       } else {
-        logger.error({ port, imei, phone, operation, error }, "Неожиданная ошибка Get balance by all phones");
+        logger.error({ port, imei, phone, operation, error: {error} }, "Неожиданная ошибка Get balance by all phones");
       }
     }
   }));

@@ -74,11 +74,9 @@ module.exports = async function getBalanceByPhone(entry) {
 
 
     if (resp?.data?.follow === "terminated by network") {
-      logger.error({ port, imei, phone, operation },
-                   "USSD прерывается сетью повторно");
+      logger.error({ port, imei, phone, operation }, "USSD прерывается сетью повторно");
     } else {
-      logger.error({ port, imei, phone, operation, error },
-                   "Неожиданная ошибка Get balance by phone");
+      logger.error({ port, imei, phone, operation, error: {error} }, "Неожиданная ошибка Get balance by phone");
     }
   }
 };

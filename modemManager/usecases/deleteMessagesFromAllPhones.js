@@ -16,7 +16,7 @@ module.exports = async function deleteMessagesFromAllPhones(_deleteMessages, _ge
     try {
      await _deleteMessages(entry)
     } catch (error) {
-      logger.error({ port, imei, phone, operation, error }, `Неожиданная ошибка ${operation}`);
+      logger.error({ port, imei, phone, operation, error: {error} }, `Неожиданная ошибка ${operation}`);
     }
   }));
 

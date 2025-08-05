@@ -12,7 +12,7 @@ module.exports = async function refreshModem(phones, _addModem, options, _getEnt
     try {
       modem.close()
     } catch (error) {
-      logger.warn({ port, imei, phone, operation, error }, `Неожиданная ошибка ${operation}`);
+      logger.warn({ port, imei, phone, operation, error: {error} }, `Неожиданная ошибка ${operation}`);
       return
     }
 

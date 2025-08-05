@@ -68,35 +68,35 @@ module.exports = async function getCode(
             try {
               let text = `Код аутентификации: ${code}`
               await _saveIncoming(entry, { sender, dateTimeSent, text });
-            } catch (e) {
-              logger.error({ port, imei, phone, error: e}, "Ошибка сохранения SMS из getCode");
+            } catch (error) {
+              logger.error({ port, imei, phone, error: {error}}, "Ошибка сохранения SMS из getCode");
             }
 
             resolve(code);
           } else {
             modem.removeListener("onNewMessage", handler);
-            logger.error({ port, imei, phone, error: e}, "Нет отправителя");
+            logger.error({ port, imei, phone }, "Нет отправителя");
             reject();
           }
         };
 
         modem.once("onNewMessage", handler);
       });
-    } catch (e) {
-      logger.warn({ port, imei, phone, error: e}, `Ошибка при ожидании кода от SIM ${phone}`);
+    } catch (error) {
+      logger.warn({ port, imei, phone, error: {error}}, `Ошибка при ожидании кода от SIM ${phone}`);
     }
 
     return codeText;
-  } catch (e) {
-    logger.error({ port, imei, phone, error: e }, `Необработанная ошибка при получении кода`);
+  } catch (error) {
+    logger.error({ port, imei, phone, error: {error} }, `Необработанная ошибка при получении кода`);
   } finally {
     await prisma.simCard
     .update({
       where: { id: sim.id },
       data: { busy: false },
     })
-    .catch((e) =>
-      logger.error({ port, imei, phone, error: e }, `Ошибка при снятии busy-флага для SIM ${phone}`),
+    .catch((error) =>
+      logger.error({ port, imei, phone, error: {error} }, `Ошибка при снятии busy-флага для SIM ${phone}`),
     );
   }
 };

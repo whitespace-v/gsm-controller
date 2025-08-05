@@ -31,8 +31,8 @@ module.exports = async function getConnectionHistoryByPhone(phone) {
       connectedAt: h.connectedAt,
       disconnectedAt: h.disconnectedAt || null,
     }));
-  } catch (err) {
-    logger.error({ err }, `Ошибка при получении истории подключений`);
+  } catch (error) {
+    logger.error({ error: {error} }, `Ошибка при получении истории подключений`);
     return [];
   }
 };

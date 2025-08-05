@@ -20,6 +20,9 @@ const DEFAULT_RECONNECT_DELAY = 2500;       // начальная задержк
 const MAX_RECONNECT_DELAY     = 40_000;     // максимальная задержка переподключения
 const MAX_RETRIES             = 3;          // число попыток переподключения
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 class ModemManager {
   constructor() {
     this.modems = new Map();               // карта «port → entry»
@@ -28,7 +31,7 @@ class ModemManager {
   // Формирует объект для логирования
   loggerFields(entry = {}, error = null) {
     const base = { port: entry?.port, imei: entry?.imei, phone: entry?.phone };
-    return error ? { ...base, error } : base;
+    return error ? { ...base, error: {error} } : base;
   }
 
   // Утилита для паузы
@@ -38,9 +41,9 @@ class ModemManager {
 
   // Обнаружение и инициализация модемов
   addModems(options) {
-    serialportgsm.list((err, devices) => {
-      if (err) {
-        logger.error({ err }, "Не удалось получить список портов");
+    serialportgsm.list((error, devices) => {
+      if (error) {
+        logger.error({ error: error }, "Не удалось получить список портов");
         return;
       }
       devices.forEach((dev) => {
@@ -145,6 +148,30 @@ class ModemManager {
     });
   }
 
+  async _getLogs(page=1, numbers=30) {
+    let logs
+    try {
+      let firstLine = page > 1 ? (page * numbers) - numbers + 1 : 1
+      let lastLine = page * numbers
+      await new Promise((resolve, reject) => {
+        exec(`tac ${process.env.LOG_FILE} | sed -n '${firstLine},${lastLine}p' | tac`, (err, stdout, stderr) => {
+          console.log(stdout)
+          if (err) {
+            logger.error("Ошибка получения логов");
+            return reject(err);
+          }
+          if (stderr) logger.warn({stderr});
+          logs = stdout
+          logger.info("Логи получены");
+          resolve();
+        });
+      });
+    } catch (error) {
+      logger.error({error});
+    }
+    return logs
+  }
+
   // Получить entry по номеру SIM
   async _getEntry(phone) {
     let entry = null;
@@ -172,7 +199,7 @@ class ModemManager {
     const shortPort = port.replace("/dev/", "");
     try {
       await new Promise((resolve, reject) => {
-        exec(`sudo /home/arch/.../replug.sh ${shortPort}`, (err, stdout, stderr) => {
+        exec(`sudo /home/debian/.../replug.sh ${shortPort}`, (err, stdout, stderr) => {
           if (err) {
             logger.error(this.loggerFields(entry, err), "Ошибка программного переподключения порта");
             return reject(err);
