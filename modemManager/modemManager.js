@@ -199,7 +199,7 @@ class ModemManager {
     const shortPort = port.replace("/dev/", "");
     try {
       await new Promise((resolve, reject) => {
-        exec(`sudo /home/debian/.../replug.sh ${shortPort}`, (err, stdout, stderr) => {
+        exec(`sudo ${process.env.REPLUG_SCRIPT} ${shortPort}`, (err, stdout, stderr) => {
           if (err) {
             logger.error(this.loggerFields(entry, err), "Ошибка программного переподключения порта");
             return reject(err);
