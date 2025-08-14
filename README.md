@@ -1,78 +1,46 @@
-### Отправка сообщения без указания симки (будет использована та которая ещё не использовалась либо та которая давно не использовалась):
-*POST:*
-`http://gsm.whalepay.ru:7777/gsm/api/2fa/send`
-**payload:** 
+# Отправка сообщения без указания симки:
 
-```JSON
-{
-    "to": "+79841894786",
-    "text": "2735"
-}
-```
+> [!tip] _Будет использована та которая которая давно не использовалась_
 
-2) Отправка сообщения с определённой симки:
+- **method**: _POST_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/2fa/send`
+- **payload**: `{"to": "+79841894786", "text": "2735"}`
 
-POST:
-http://gsm.whalepay.ru:7777/gsm/api/2fa/send?from=%2B<номер телефона без +>
-payload: 
+# Отправка сообщения с определённой симки:
 
-JSON
+> [!tip] номер телефона в формате `%2B79841894786`
 
-{
-    "to": "+79841894786",
-    "text": "2735"
-}
+- **method**: _POST_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/2fa/send?from=%2B<phone_number>`
+- **payload**: `{"to": "+79841894786", "text": "2735"}`
 
+# Получение баланса со всех симок:
 
----------------------------
+- **method**: _GET_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/debug/allbalances`
 
-3) Получение баланса со всех симок:
+# Получение баланса с определённой симки:
 
-GET:
-http://gsm.whalepay.ru:7777/gsm/api/debug/allbalances
+- **method**: _GET_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/debug/balance?from=%2B79140772433`
 
----------------------------
+# Перезагрузка выбранных модемов (нуждается в доработке):
 
-4) Получение баланса с определённой симки:
+- **method**: _POST_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/debug/refreshmodems`
+- **payload**: `{"phones": ["+79140772433","+79140774084"]}`
 
-GET:
-http://gsm.whalepay.ru:7777/gsm/api/debug/balance?from=%2B79140772433
+# Получение кода для авторизации в банках
 
----------------------------
+- **method**: _GET_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/whale/code?from=%2B<phone_number>`
 
-5) Перезагрузка выбранных модемов (нуждается в доработке):
+# Получение любого входящего сообщения
 
-POST:
-http://gsm.whalepay.ru:7777/gsm/api/debug/refreshmodems
-payload: 
+- **method**: _GET_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/debug/sms?from=%2B<phone_number>`
 
-JSON
+# Высасывание последних записанных логов:
 
-{
-    "phones": [
-        "+79140772433",
-        "+79140774084"
-    ]
-}
-
-
----------------------------
-
-6) Получение кода для авторизации в банках
-
-GET:
-http://gsm.whalepay.ru:7777/gsm/api/whale/code?from=%2B<номер телефона без +>
-
----------------------------
-
-7) Получение любого входящего сообщения
-
-GET:
-http://gsm.whalepay.ru:7777/gsm/api/debug/sms?from=%2B<номер телефона без +>
-
----------------------------
-
-8) Высасывание последних записанных логов:
-
-GET:
-http://gsm.whalepay.ru:7777/gsm/api/logs?numbers=<необходимое количество строк>
+- **method**: _GET_
+- **path**: `http://gsm.whalepay.ru:7777/gsm/api/logs?numbers=<необходимое количество строк>`
